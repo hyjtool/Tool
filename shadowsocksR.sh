@@ -215,7 +215,7 @@ function config_shadowsocks(){
     "method":"chacha20",
     "protocol":"auth_sha1_v2",
     "protocol_param":"",
-    "obfs":"http_simple",
+    "obfs":"tls1.2_ticket_auth",
     "obfs_param":"",
     "redirect":"",
     "connect_verbose_info": 0,
@@ -259,7 +259,7 @@ function install_ss(){
         echo -e "Local IP: \033[41;37m 127.0.0.1 \033[0m"
         echo -e "Local Port: \033[41;37m 1080 \033[0m"
         echo -e "Protocol: \033[41;37m auth_sha1_v2 \033[0m"
-        echo -e "obfs: \033[41;37m http_simple \033[0m"
+        echo -e "obfs: \033[41;37m tls1.2_ticket_auth \033[0m"
         echo -e "Encryption Method: \033[41;37m chacha20 \033[0m"
         echo
         echo "Welcome to visit:https://shadowsocks.be/9.html"
@@ -269,7 +269,7 @@ function install_ss(){
         echo "Enjoy it!"
         echo
     else
-        echo "Shadowsocks install failed! Please Email to Teddysun <i@teddysun.com> and contact."
+        echo "Shadowsocks install failed! "
         install_cleanup
         exit 1
     fi
