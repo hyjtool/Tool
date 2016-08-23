@@ -4,17 +4,13 @@ export PATH
 #=================================================================#
 #   System Required:  CentOS 6,7, Debian, Ubuntu                  #
 #   Description: One click Install ShadowsocksR Server            #
-#   Author: Teddysun <i@teddysun.com>                             #
 #   Thanks: @breakwa11 <https://twitter.com/breakwa11>            #
-#   Intro:  https://shadowsocks.be/9.html                         #
 #=================================================================#
 
 clear
 echo
 echo "#############################################################"
 echo "# One click Install ShadowsocksR Server                     #"
-echo "# Intro: https://shadowsocks.be/9.html                      #"
-echo "# Author: Teddysun <i@teddysun.com>                         #"
 echo "# Thanks: @breakwa11 <https://twitter.com/breakwa11>        #"
 echo "#############################################################"
 echo
@@ -87,8 +83,8 @@ function pre_install(){
     fi
     # Set ShadowsocksR config password
     echo "Please input password for ShadowsocksR:"
-    read -p "(Default password: teddysun.com):" shadowsockspwd
-    [ -z "$shadowsockspwd" ] && shadowsockspwd="teddysun.com"
+    read -p "(Default password: ilovejia):" shadowsockspwd
+    [ -z "$shadowsockspwd" ] && shadowsockspwd="ilovejia"
     echo
     echo "---------------------------"
     echo "password = $shadowsockspwd"
@@ -98,8 +94,8 @@ function pre_install(){
     while true
     do
     echo -e "Please input port for ShadowsocksR [1-65535]:"
-    read -p "(Default port: 8989):" shadowsocksport
-    [ -z "$shadowsocksport" ] && shadowsocksport="8989"
+    read -p "(Default port: 138):" shadowsocksport
+    [ -z "$shadowsocksport" ] && shadowsocksport="138"
     expr $shadowsocksport + 0 &>/dev/null
     if [ $? -eq 0 ]; then
         if [ $shadowsocksport -ge 1 ] && [ $shadowsocksport -le 65535 ]; then
@@ -210,21 +206,24 @@ function config_shadowsocks(){
 {
     "server":"0.0.0.0",
     "server_ipv6":"::",
-    "server_port":${shadowsocksport},
+    "server_port":138,
     "local_address":"127.0.0.1",
     "local_port":1080,
-    "password":"${shadowsockspwd}",
+    "password":"ilovejia",
     "timeout":120,
-    "method":"aes-256-cfb",
-    "protocol":"origin",
+    "udp_timeout": 60,
+    "method":"chacha20",
+    "protocol":"auth_sha1_v2",
     "protocol_param":"",
-    "obfs":"plain",
+    "obfs":"http_simple",
     "obfs_param":"",
     "redirect":"",
+    "connect_verbose_info": 0,
     "dns_ipv6":false,
     "fast_open":false,
     "workers":1
 }
+
 EOF
 }
 
@@ -259,9 +258,9 @@ function install_ss(){
         echo -e "Password: \033[41;37m ${shadowsockspwd} \033[0m"
         echo -e "Local IP: \033[41;37m 127.0.0.1 \033[0m"
         echo -e "Local Port: \033[41;37m 1080 \033[0m"
-        echo -e "Protocol: \033[41;37m origin \033[0m"
-        echo -e "obfs: \033[41;37m plain \033[0m"
-        echo -e "Encryption Method: \033[41;37m aes-256-cfb \033[0m"
+        echo -e "Protocol: \033[41;37m auth_sha1_v2 \033[0m"
+        echo -e "obfs: \033[41;37m http_simple \033[0m"
+        echo -e "Encryption Method: \033[41;37m chacha20 \033[0m"
         echo
         echo "Welcome to visit:https://shadowsocks.be/9.html"
         echo "If you want to change protocol & obfs, reference URL:"
