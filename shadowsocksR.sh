@@ -262,7 +262,7 @@ function install_ss(){
         echo -e "obfs: \033[41;37m tls1.2_ticket_auth \033[0m"
         echo -e "Encryption Method: \033[41;37m chacha20 \033[0m"
         echo
-        echo "Welcome to visit:https://shadowsocks.be/9.html"
+        
         echo "If you want to change protocol & obfs, reference URL:"
         echo "https://github.com/breakwa11/shadowsocks-rss/wiki/Server-Setup"
         echo
