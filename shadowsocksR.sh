@@ -83,8 +83,8 @@ function pre_install(){
     fi
     # Set ShadowsocksR config password
     echo "Please input password for ShadowsocksR:"
-    read -p "(Default password: ilovejia):" shadowsockspwd
-    [ -z "$shadowsockspwd" ] && shadowsockspwd="ilovejia"
+    read -p "(Default password: ilovessr):" shadowsockspwd
+    [ -z "$shadowsockspwd" ] && shadowsockspwd="ilovessr"
     echo
     echo "---------------------------"
     echo "password = $shadowsockspwd"
@@ -209,7 +209,7 @@ function config_shadowsocks(){
     "server_port":138,
     "local_address":"127.0.0.1",
     "local_port":1080,
-    "password":"ilovejia",
+    "password":"ilovessr",
     "timeout":120,
     "udp_timeout": 60,
     "method":"chacha20",
