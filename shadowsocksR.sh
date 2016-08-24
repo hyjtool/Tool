@@ -210,7 +210,7 @@ function config_shadowsocks(){
     "local_port":1080,
     "port_password":{
     "${shadowsocksport}":"${shadowsockspwd}",
-    "80":"${shadowsockspwd}"，
+    "80":"${shadowsockspwd}",
     "443":"${shadowsockspwd}"
 },
     "timeout":120,
