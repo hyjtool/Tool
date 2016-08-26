@@ -208,11 +208,11 @@ function config_shadowsocks(){
     "server_ipv6":"::",
     "local_address":"127.0.0.1",
     "local_port":1080,
-    "port_password":{
+    "port_password":
+    {
     "${shadowsocksport}":"${shadowsockspwd}",
-    "80":"${shadowsockspwd}",
-    "443":"${shadowsockspwd}"
-},
+    "80":"${shadowsockspwd}"
+    },
     "timeout":120,
     "method":"chacha20",
     "protocol":"auth_sha1_v2",
