@@ -213,8 +213,8 @@ function config_shadowsocks(){
     "${shadowsocksport}":"${shadowsockspwd}"
     },
     "timeout":120,
-    "method":"chacha20",
-    "protocol":"auth_sha1_v4",
+    "method":"aes-256-cfb",
+    "protocol":"auth_aes128",
     "protocol_param":"",
     "obfs":"tls1.2_ticket_auth",
     "obfs_param":"",
@@ -258,9 +258,9 @@ function install_ss(){
         echo -e "Password: \033[41;37m ${shadowsockspwd} \033[0m"
         echo -e "Local IP: \033[41;37m 127.0.0.1 \033[0m"
         echo -e "Local Port: \033[41;37m 1080 \033[0m"
-        echo -e "Protocol: \033[41;37m auth_sha1_v4 \033[0m"
+        echo -e "Protocol: \033[41;37m auth_aes128 \033[0m"
         echo -e "obfs: \033[41;37m tls1.2_ticket_auth \033[0m"
-        echo -e "Encryption Method: \033[41;37m chacha20 \033[0m"
+        echo -e "Encryption Method: \033[41;37m aes-256-cfb \033[0m"
         echo
         
         echo "If you want to change protocol & obfs, reference URL:"
