@@ -33,9 +33,9 @@ fi
 rpm -Uvh epel-release*rpm
 yum install -y libnet libnet-devel libpcap libpcap-devel gcc
 
-wget --no-check-certificate https://raw.githubusercontent.com/GreyHo/SSR/master/net-speeder-master.zip 
-unzip net-speeder-master.zip
-cd net-speeder-master
+wget --no-check-certificate https://raw.githubusercontent.com/GreyHo/SSR/master/net_speeder.zip 
+unzip net_speeder.zip
+cd net_speeder
 if [ -f /proc/user_beancounters ] || [ -d /proc/bc ]; then
     sh build.sh -DCOOKED
     INTERFACE=venet0
@@ -44,9 +44,9 @@ else
     INTERFACE=eth0
 fi
 
-NS_PATH=/usr/local/net-speeder-master
+NS_PATH=/usr/local/net_speeder
 mkdir -p $NS_PATH
-cp -Rf net-speeder-master $NS_PATH
+cp -Rf net_speeder $NS_PATH
 
 echo -e "\033[36m net_speeder installed. \033[0m"
 echo -e "\033[36m Usage: nohup ${NS_PATH}/net_speeder $INTERFACE \"ip\" >/dev/null 2>&1 & \033[0m"
