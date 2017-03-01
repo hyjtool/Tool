@@ -257,7 +257,7 @@ config_shadowsocks(){
     "method":"rc4-md5",
     "protocol":"auth_aes128_md5",
     "protocol_param":"",
-    "obfs":"plain",
+    "obfs":"http_simple",
     "obfs_param":"",
     "redirect":"",
     "dns_ipv6":false,
@@ -303,7 +303,7 @@ install(){
         echo -e "Local IP: \033[41;37m 127.0.0.1 \033[0m"
         echo -e "Local Port: \033[41;37m 1080 \033[0m"
         echo -e "Protocol: \033[41;37m auth_aes128_md5 \033[0m"
-        echo -e "obfs: \033[41;37m plain \033[0m"
+        echo -e "obfs: \033[41;37m http_simple \033[0m"
         echo -e "Encryption Method: \033[41;37m rc4-md5 \033[0m"
         echo
         echo "If you want to change protocol & obfs, please visit reference URL:"
