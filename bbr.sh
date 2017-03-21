@@ -2,11 +2,9 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 #=================================================================#
-#   System Required:  ubuntu & debian                                    #
+#   System Required:  ubuntu & debian                             #
 #   Description: One click Install UML for bbr+ssr                #
-#   Author: 91yun <https://twitter.com/91yun>                     #
 #   Thanks: @allient neko @Jacky Bao                              #
-#   Intro:  https://www.91yun.org                                 #
 #=================================================================#
 
 
