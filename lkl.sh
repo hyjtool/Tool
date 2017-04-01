@@ -2,7 +2,7 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 #=================================================================#
-#   System Required:  CentOS7 ubuntu Debian                        #
+#   System Required:  Centos 7 x86_64 ubuntu Debian               #
 #   Description: One click Install lkl                            #
 #   Thanks: @allient neko                                         #
 #=================================================================#
