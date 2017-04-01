@@ -2,7 +2,7 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 #=================================================================#
-#   System Required:  CentOS, Debian, Ubuntu                      #
+#   System Required:  Centos 7 x86_64, Debian, Ubuntu             #
 #   Description: One click Install Shadowsocks-go server          #
 #   Thanks: @cyfdecyf <https://twitter.com/cyfdecyf>              #
 #==================================================================
