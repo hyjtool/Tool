@@ -4,17 +4,13 @@ export PATH
 #=================================================================#
 #   System Required:  CentOS, Debian, Ubuntu                      #
 #   Description: One click Install Shadowsocks-go server          #
-#   Author: Teddysun <i@teddysun.com>                             #
 #   Thanks: @cyfdecyf <https://twitter.com/cyfdecyf>              #
-#   Intro:  https://teddysun.com/392.html                         #
 #==================================================================
 
 clear
 echo
 echo "#############################################################"
 echo "# One click Install Shadowsocks-go server                   #"
-echo "# Intro: https://teddysun.com/392.html                      #"
-echo "# Author: Teddysun <i@teddysun.com>                         #"
 echo "# Github: https://github.com/shadowsocks/shadowsocks-go     #"
 echo "#############################################################"
 echo
@@ -143,8 +139,8 @@ pre_install(){
     fi
     # Set shadowsocks-go config password
     echo "Please input password for shadowsocks-go:"
-    read -p "(Default password: teddysun.com):" shadowsockspwd
-    [ -z "${shadowsockspwd}" ] && shadowsockspwd="teddysun.com"
+    read -p "(Default password: ilovess):" shadowsockspwd
+    [ -z "${shadowsockspwd}" ] && shadowsockspwd="ilovess"
     echo
     echo "---------------------------"
     echo "password = ${shadowsockspwd}"
@@ -154,8 +150,8 @@ pre_install(){
     while true
     do
     echo -e "Please input port for shadowsocks-go [1-65535]:"
-    read -p "(Default port: 8989):" shadowsocksport
-    [ -z "${shadowsocksport}" ] && shadowsocksport="8989"
+    read -p "(Default port: 443):" shadowsocksport
+    [ -z "${shadowsocksport}" ] && shadowsocksport="443"
     expr ${shadowsocksport} + 0 &>/dev/null
     if [ $? -eq 0 ]; then
         if [ ${shadowsocksport} -ge 1 ] && [ ${shadowsocksport} -le 65535 ]; then
@@ -243,7 +239,7 @@ config_shadowsocks(){
     "server_port":${shadowsocksport},
     "local_port":1080,
     "password":"${shadowsockspwd}",
-    "method":"aes-256-cfb",
+    "method":"rc4-md5",
     "timeout":600
 }
 EOF
@@ -322,9 +318,8 @@ install(){
     echo -e "Your Server Port: \033[41;37m ${shadowsocksport} \033[0m"
     echo -e "Your Password: \033[41;37m ${shadowsockspwd} \033[0m"
     echo -e "Your Local Port: \033[41;37m 1080 \033[0m"
-    echo -e "Your Encryption Method: \033[41;37m aes-256-cfb \033[0m"
+    echo -e "Your Encryption Method: \033[41;37m rc4-md5 \033[0m"
     echo
-    echo "Welcome to visit:https://teddysun.com/392.html"
     echo "Enjoy it!"
     echo
 }
