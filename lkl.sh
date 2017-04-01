@@ -2,11 +2,9 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 #=================================================================#
-#   System Required:  CentOS ubuntu Debian                                    #
-#   Description: One click Install lkl                #
-#   Author: 91yun <https://twitter.com/91yun>                     #
-#   Thanks: @allient neko                               #
-#   Intro:  https://www.91yun.org                                 #
+#   System Required:  CentOS7 ubuntu Debian                        #
+#   Description: One click Install lkl                            #
+#   Thanks: @allient neko                                         #
 #=================================================================#
 
 if [[ $EUID -ne 0 ]]; then
@@ -108,7 +106,7 @@ timeout client 50000
 timeout server 50000
 
 frontend proxy-in
-bind *:9191
+bind *:443
 default_backend proxy-out
 
 backend proxy-out
@@ -131,7 +129,7 @@ ip link set lkl-tap up
 sysctl -w net.ipv4.ip_forward=1
 iptables -P FORWARD ACCEPT 
 iptables -t nat -A POSTROUTING -o venet0 -j MASQUERADE
-iptables -t nat -A PREROUTING -i venet0 -p tcp --dport 9000:9999 -j DNAT --to-destination 10.0.0.2
+iptables -t nat -A PREROUTING -i venet0 -j DNAT --to-destination 10.0.0.2
 
 nohup /root/lkl/lkl.sh &
 
