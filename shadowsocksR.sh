@@ -255,7 +255,7 @@ config_shadowsocks(){
     "password":"${shadowsockspwd}",
     "timeout":120,
     "method":"rc4-md5",
-    "protocol":"auth_aes128_md5",
+    "protocol":"auth_sha1_v4",
     "protocol_param":"",
     "obfs":"plain",
     "obfs_param":"",
@@ -302,7 +302,7 @@ install(){
         echo -e "Password: \033[41;37m ${shadowsockspwd} \033[0m"
         echo -e "Local IP: \033[41;37m 127.0.0.1 \033[0m"
         echo -e "Local Port: \033[41;37m 1080 \033[0m"
-        echo -e "Protocol: \033[41;37m auth_aes128_md5 \033[0m"
+        echo -e "Protocol: \033[41;37m auth_sha1_v4 \033[0m"
         echo -e "obfs: \033[41;37m plain \033[0m"
         echo -e "Encryption Method: \033[41;37m rc4-md5 \033[0m"
         echo
