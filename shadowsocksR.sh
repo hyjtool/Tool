@@ -2,11 +2,9 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 #=================================================================#
-#   System Required:  CentOS 6,7, Debian, Ubuntu                  #
+#   System Required: Centos 7 x86_64, Debian, Ubuntu              #
 #   Description: One click Install ShadowsocksR Server            #
-#   Author: Teddysun <i@teddysun.com>                             #
 #   Thanks: @breakwa11 <https://twitter.com/breakwa11>            #
-#   Intro:  https://shadowsocks.be/9.html                         #
 #=================================================================#
 
 clear
@@ -14,7 +12,6 @@ echo
 echo "#############################################################"
 echo "# One click Install ShadowsocksR Server                     #"
 echo "# Intro: https://shadowsocks.be/9.html                      #"
-echo "# Author: Teddysun <i@teddysun.com>                         #"
 echo "# Github: https://github.com/breakwa11/shadowsocks          #"
 echo "#############################################################"
 echo
@@ -141,8 +138,8 @@ pre_install(){
     fi
     # Set ShadowsocksR config password
     echo "Please input password for ShadowsocksR:"
-    read -p "(Default password: teddysun.com):" shadowsockspwd
-    [ -z "${shadowsockspwd}" ] && shadowsockspwd="teddysun.com"
+    read -p "(Default password: ilovessr):" shadowsockspwd
+    [ -z "${shadowsockspwd}" ] && shadowsockspwd="ilovessr"
     echo
     echo "---------------------------"
     echo "password = ${shadowsockspwd}"
@@ -152,8 +149,8 @@ pre_install(){
     while true
     do
     echo -e "Please input port for ShadowsocksR [1-65535]:"
-    read -p "(Default port: 8989):" shadowsocksport
-    [ -z "${shadowsocksport}" ] && shadowsocksport="8989"
+    read -p "(Default port: 443):" shadowsocksport
+    [ -z "${shadowsocksport}" ] && shadowsocksport="443"
     expr ${shadowsocksport} + 0 &>/dev/null
     if [ $? -eq 0 ]; then
         if [ ${shadowsocksport} -ge 1 ] && [ ${shadowsocksport} -le 65535 ]; then
@@ -260,8 +257,8 @@ config_shadowsocks(){
     "local_port":1080,
     "password":"${shadowsockspwd}",
     "timeout":120,
-    "method":"aes-256-cfb",
-    "protocol":"origin",
+    "method":"rc4-md5",
+    "protocol":"auth_sha1_v4",
     "protocol_param":"",
     "obfs":"plain",
     "obfs_param":"",
@@ -308,9 +305,9 @@ install(){
         echo -e "Password: \033[41;37m ${shadowsockspwd} \033[0m"
         echo -e "Local IP: \033[41;37m 127.0.0.1 \033[0m"
         echo -e "Local Port: \033[41;37m 1080 \033[0m"
-        echo -e "Protocol: \033[41;37m origin \033[0m"
+        echo -e "Protocol: \033[41;37m auth_sha1_v4 \033[0m"
         echo -e "obfs: \033[41;37m plain \033[0m"
-        echo -e "Encryption Method: \033[41;37m aes-256-cfb \033[0m"
+        echo -e "Encryption Method: \033[41;37m rc4-md5 \033[0m"
         echo
         echo "Welcome to visit:https://shadowsocks.be/9.html"
         echo "If you want to change protocol & obfs, please visit reference URL:"
@@ -319,7 +316,7 @@ install(){
         echo "Enjoy it!"
         echo
     else
-        echo "ShadowsocksR install failed, please Email to Teddysun <i@teddysun.com> and contact"
+        
         install_cleanup
         exit 1
     fi
