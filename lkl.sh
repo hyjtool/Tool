@@ -107,11 +107,11 @@ timeout connect 1000
 timeout client 150000
 timeout server 150000
 
-frontend ss-in
+frontend proxy-in
 bind *:443
-default_backend ss-out
+default_backend proxy-out
 
-backend ss-out
+backend proxy-out
 server server1 10.0.0.1 maxconn 20480
 
 EOF
