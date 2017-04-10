@@ -67,13 +67,13 @@ cd /root/shadowsocksr/shadowsocks
 python server.py -d start
 
 #写入自动启动
-cat > /root/shadowsocksr/shadowsocks/run.sh<<-EOF
+cat > /root/shadowsocksr/shadowsocks/ssrun.sh<<-EOF
 cd /root/shadowsocksr/shadowsocks
 python server.py -d start
 EOF
 
-chmod +x run.sh
+chmod +x ssrun.sh
 sed -i "s/exit 0/ /ig" /etc/rc.local
-echo "/root/shadowsocksr/shadowsocks/run.sh" >> /etc/rc.local
+echo "/root/shadowsocksr/shadowsocks/ssrun.sh" >> /etc/rc.local
 
 
