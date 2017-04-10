@@ -2,16 +2,15 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 #=================================================================#
-#   System Required:  Centos 7 x86_64, Debian, Ubuntu             #
-#   Description: One click Install Shadowsocks-go server          #
-#   Thanks: @cyfdecyf <https://twitter.com/cyfdecyf>              #
+#   System Required:   Debian 8.0 x86_64 minimal                  #
+#   Description: One click Install Shadowsocksr server            #
 #==================================================================
 
 clear
 echo
 echo "#############################################################"
-echo "# One click Install Shadowsocks-go server                   #"
-echo "# Github: https://github.com/shadowsocks/shadowsocks-go     #"
+echo "# One click Install Shadowsocksr server                     #"
+echo "# Github: https://github.com/shadowsocksr                   #"
 echo "#############################################################"
 echo
 
@@ -378,3 +377,19 @@ case "$action" in
         echo "Usage: `basename $0` [install|uninstall]"
         ;;
 esac
+
+
+    "server": "0.0.0.0",
+    "server_ipv6": "::",
+    "server_port": 443,
+    "local_address": "127.0.0.1",
+    "local_port": 1080,
+
+    "password": "ilovessr",
+    "method": "rc4-md5",
+    "protocol": "auth_aes128_md5",
+    "protocol_param": "",
+    "obfs": "plain",
+    "obfs_param": "",
+    "speed_limit_per_con": 0,
+    "speed_limit_per_user": 0,
