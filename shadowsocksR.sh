@@ -33,7 +33,7 @@ bash initcfg.sh
 
 
 # Config ShadowsocksR
-config_shadowsocks(){
+rm -rf /etc/shadowsocksr/user-config.json
     cat > /etc/shadowsocksr/user-config.json<<-EOF
 {
     "server": "0.0.0.0",
@@ -61,7 +61,7 @@ config_shadowsocks(){
 }
 
 EOF
-}
+
 
 cd ~/shadowsocksr/shadowsocks
 python server.py -d start
