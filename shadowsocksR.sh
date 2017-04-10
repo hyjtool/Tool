@@ -20,11 +20,13 @@ echo
 cur_dir=`pwd`
 
 # Install ShadowsocksR
+
 apt-get install git
 
 git clone -b manyuser https://github.com/shadowsocksr/shadowsocksr.git
 
 cd ~/shadowsocksr
+
 bash initcfg.sh
 
 
