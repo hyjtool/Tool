@@ -2,7 +2,7 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 #=================================================================#
-#   System Required: Centos 7 x86_64, Debian, Ubuntu              #
+#   System Required:       Debian 8.0 x86_64 minimal              #
 #   Description: One click Install ShadowsocksR Server            #
 #   Thanks: @breakwa11 <https://twitter.com/breakwa11>            #
 #=================================================================#
