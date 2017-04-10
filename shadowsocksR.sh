@@ -33,8 +33,8 @@ bash initcfg.sh
 
 
 # Config ShadowsocksR
-rm -rf /etc/shadowsocksr/user-config.json
-    cat > /etc/shadowsocksr/user-config.json<<-EOF
+rm -rf ~/shadowsocksr/user-config.json
+    cat > ~/shadowsocksr/user-config.json<<-EOF
 {
     "server": "0.0.0.0",
     "server_ipv6": "::",
