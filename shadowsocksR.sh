@@ -11,7 +11,7 @@ clear
 echo
 echo "#############################################################"
 echo "# One click Install ShadowsocksR Server                     #"
-echo "# Intro: https://shadowsocks.be/9.html                      #"
+echo "#                                                           #"
 echo "# Github: https://github.com/breakwa11/shadowsocks          #"
 echo "#############################################################"
 echo
