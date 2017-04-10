@@ -23,7 +23,7 @@ cur_dir=`pwd`
 
 apt-get -y update
 
-apt-get install git
+apt-get -y install git
 
 git clone -b manyuser https://github.com/shadowsocksr/shadowsocksr.git
 
