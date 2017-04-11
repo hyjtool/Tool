@@ -28,7 +28,7 @@ get_char(){
         stty $SAVEDSTTY
     }
     echo
-    echo "Press Enter to start...or Press Ctrl+C to cancel"
+    echo "Press Enter to continue...or Press Ctrl+C to cancel"
     char=`get_char`
 
 
