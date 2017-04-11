@@ -17,7 +17,7 @@ echo "#     Thanks: @breakwa11 <https://twitter.com/breakwa11>    #"
 echo "#############################################################"
 echo
 
-#提示
+# 提示
 get_char(){
         SAVEDSTTY=`stty -g`
         stty -echo
@@ -31,10 +31,10 @@ get_char(){
     echo "Press Enter to start...or Press Ctrl+C to cancel"
     char=`get_char`
 
-#Current folder
+# 当前路径
 cur_dir=`pwd`
 
-# Install ShadowsocksR
+# 安装ShadowsocksR
 
 apt-get -y update
 
@@ -47,7 +47,7 @@ cd ~/shadowsocksr
 bash initcfg.sh
 
 
-# Config ShadowsocksR
+# 配置ShadowsocksR
 rm -rf /root/shadowsocksr/user-config.json
     cat > /root/shadowsocksr/user-config.json<<-EOF
 {
@@ -78,10 +78,7 @@ rm -rf /root/shadowsocksr/user-config.json
 EOF
 
 
-cd /root/shadowsocksr/shadowsocks
-python server.py -d start
-
-#写入自动启动
+# 开机自启
 cat > /etc/systemd/system/shadowsocks.service<<-EOF
 [Unit]
 Description=ShadowsocksR server
@@ -103,3 +100,7 @@ WantedBy=multi-user.target
 EOF
 
 systemctl enable shadowsocks.service && systemctl start shadowsocks.service
+
+# 启动
+cd /root/shadowsocksr/shadowsocks
+python server.py -d start
