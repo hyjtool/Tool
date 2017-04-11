@@ -3,12 +3,10 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 #=================================================================#
 #   System Required:     Debian 8.0 x86_64 minimal                #
-#   Description:         One click Install lkl                    #
-#   Thanks: @allient neko                                         #
+#   Description:         Linux kernel library                     #
+#   Thanks:   @linhua   ,   @allientNeko                          #
 #=================================================================#
 
-#Current folder
-cur_dir=`pwd`
 
 mkdir /root/lkl
 cd /root/lkl
