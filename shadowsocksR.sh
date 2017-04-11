@@ -101,4 +101,23 @@ EOF
 
 systemctl enable shadowsocks.service && systemctl start shadowsocks.service
 
+#检查启动
+check_running(){
+    PID=`ps -ef | grep -v grep | grep -i "${BIN}" | awk '{print $2}'`
+    if [ ! -z $PID ]; then
+        return 0
+    else
+        return 1
+    fi
+}
 
+do_start(){
+    check_running
+    if [ $? -eq 0 ]; then
+        echo "Congratulations!You can enjoy SSR now..."
+        exit 0
+    else
+       echo "Sorry,something went wrong!"
+        
+    fi
+}
