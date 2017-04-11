@@ -16,7 +16,7 @@ wget --no-check-certificate https://raw.githubusercontent.com/hyjtool/Tool/maste
 
 
 cd /root/shadowsocksr/shadowsocks
-LD_PRELOAD=~/lkl/liblkl-hijack.so LKL_HIJACK_NET_QDISC="root|fq" LKL_HIJACK_SYSCTL='net.ipv4.tcp_congestion_control="bbr";net.ipv4.tcp_wmem="4096 16384 30000000"' LKL_HIJACK_NET_IFTYPE=tap LKL_HIJACK_NET_IFPARAMS=tap0 LKL_HIJACK_NET_IP=10.0.0.2 LKL_HIJACK_NET_NETMASK_LEN=24 LKL_HIJACK_NET_GATEWAY=10.0.0.1 LKL_HIJACK_OFFLOAD="0x8883" python server.py
+LD_PRELOAD="/root/lkl/liblkl-hijack.so" LKL_HIJACK_NET_QDISC="root|fq" LKL_HIJACK_SYSCTL='net.ipv4.tcp_congestion_control="bbr";net.ipv4.tcp_wmem="4096 16384 30000000"' LKL_HIJACK_NET_IFTYPE="tap" LKL_HIJACK_NET_IFPARAMS="tap0" LKL_HIJACK_NET_IP="10.0.0.2" LKL_HIJACK_NET_NETMASK_LEN="24" LKL_HIJACK_NET_GATEWAY="10.0.0.1" LKL_HIJACK_OFFLOAD="0x8883" python3 server.py
 
 
 rm -rf /root/lkl.sh
