@@ -122,4 +122,8 @@ do_check(){
         
     fi
 }
+
 do_check
+
+
+
