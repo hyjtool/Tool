@@ -103,9 +103,6 @@ systemctl enable shadowsocks.service && systemctl start shadowsocks.service
 
 
 #检查启动
-
-do_check
-
 check_running(){
     PID=`ps -ef | grep -v grep | grep -i "${BIN}" | awk '{print $2}'`
     if [ ! -z $PID ]; then
@@ -125,3 +122,4 @@ do_check(){
         
     fi
 }
+do_check
