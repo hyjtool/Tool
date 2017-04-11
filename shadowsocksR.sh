@@ -107,11 +107,9 @@ do_check(){
         echo "Sorry,something went wrong!"
     else
         echo "Congratulations!You can enjoy SSR now..."
-        echo "SSR is running with PID $pid"
     fi
 }
 
 do_check
-
 
 
