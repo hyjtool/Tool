@@ -104,7 +104,7 @@ systemctl enable shadowsocks.service && systemctl start shadowsocks.service
 
 #检查启动
 do_check(){
-    pid=`ps -ef | grep -v grep | grep -v ps | grep -i "ser.py" | awk '{print $2}'`
+    pid=`ps -ef | grep -v grep | grep -v ps | grep -i "seer.py" | awk '{print $2}'`
     if [ -z $pid ]; then
         echo "Sorry,something went wrong!"
     else
