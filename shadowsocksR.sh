@@ -108,7 +108,7 @@ do_check(){
     if [ -z $pid ]; then
         echo "Sorry,something went wrong!"
     else
-        echo "Congratulations!You can enjoy SSR now......"
+        echo "Congratulations!You can enjoy SSR now123..."
     fi
 }
 
