@@ -106,9 +106,10 @@ systemctl enable shadowsocks.service && systemctl start shadowsocks.service
 do_check(){
     pid=`ps -ef | grep -v grep | grep -v ps | grep -i "server.py" | awk '{print $2}'`
     if [ -z $pid ]; then
-        echo "Sorry,something went wrong!!!"
+        echo "Sorry,something went wrong!"
     else
-        echo "Congratulations!You can enjoy SSR now123...."
+        echo "Congratulations!You can enjoy SSR now..."
+        echo "SSR is running with PID $pid"
     fi
 }
 
