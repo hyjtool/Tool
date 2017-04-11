@@ -103,4 +103,4 @@ systemctl enable shadowsocks.service && systemctl start shadowsocks.service
 
 # 启动
 cd /root/shadowsocksr/shadowsocks
-python server.py -d start
+python server.py 
