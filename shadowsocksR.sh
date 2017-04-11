@@ -31,8 +31,6 @@ get_char(){
     echo "Press Enter to start...or Press Ctrl+C to cancel"
     char=`get_char`
 
-# 当前路径
-cur_dir=`pwd`
 
 # 安装ShadowsocksR
 
