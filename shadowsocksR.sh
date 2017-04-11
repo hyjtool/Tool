@@ -66,6 +66,25 @@ EOF
 cd /root/shadowsocksr/shadowsocks
 python server.py -d start
 
+#写入自动启动
+cat > /etc/systemd/system/shadowsocks.service<<-EOF
+[Unit]
+Description=ShadowsocksR server
+After=network.target
+Wants=network.target
 
+[Service]
+Type=forking
+PIDFile=/var/run/shadowsocks.pid
+ExecStart=/usr/bin/python /root/shadowsocksr/shadowsocks/server.py --pid-file /var/run/shadowsocks.pid -c /root/shadowsocksr/user-config.json -d start
+ExecStop=/usr/bin/python /root/shadowsocksr/shadowsocks/server.py --pid-file /var/run/shadowsocks.pid -c /root/shadowsocksr/user-config.json -d stop
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
 
+[Install]
+WantedBy=multi-user.target
 
+EOF
+
+systemctl enable shadowsocks.service && systemctl start shadowsocks.service
