@@ -112,4 +112,4 @@ do_check(){
 
 do_check
 
-rm -rf shadowsocksR.sh
+rm -rf /root/shadowsocksR.sh
