@@ -28,7 +28,7 @@ backend proxy-out
 server server1 10.0.0.1 maxconn 20480
 EOF
 	
-wget --no-check-certificate http://soft.91yun.org/uml/lkl/liblkl-hijack.so
+wget --no-check-certificate https://raw.githubusercontent.com/hyjtool/Tool/master/liblkl-hijack.so
 
 cat > /root/lkl/lkl.sh<<-EOF
 LD_PRELOAD=/root/lkl/liblkl-hijack.so LKL_HIJACK_NET_QDISC="root|fq" LKL_HIJACK_SYSCTL="net.ipv4.tcp_congestion_control=bbr" LKL_HIJACK_NET_IFTYPE=tap LKL_HIJACK_NET_IFPARAMS=lkl-tap LKL_HIJACK_NET_IP=10.0.0.2 LKL_HIJACK_NET_NETMASK_LEN=24 LKL_HIJACK_NET_GATEWAY=10.0.0.1 haproxy -f /root/lkl/haproxy.cfg
