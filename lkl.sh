@@ -70,3 +70,6 @@ if [ "$p" == "" ]; then
 else
 	echo "success"
 fi
+
+
+rm -rf /root/lkl.sh
