@@ -43,6 +43,8 @@ LD_PRELOAD="/root/lkl/liblkl-hijack.so" LKL_HIJACK_NET_QDISC="root|fq" LKL_HIJAC
 
 exit
 
+EOF
+
 #给予权限
 chmod +x bbr.sh
 
