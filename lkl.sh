@@ -37,7 +37,6 @@ cat > /root/lkl/haproxy.cfg<<-EOF
 global
 pidfile /var/run/haproxy.pid
 ulimit-n 15000
-
 defaults
 log global
 mode tcp
@@ -75,5 +74,7 @@ else
 	echo "Congratulations！Enjoy the speed..."
 fi
 
+
 #清理
 rm -rf /root/lkl.sh
+
