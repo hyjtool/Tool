@@ -71,7 +71,7 @@ p=`ping 10.0.0.2 -c 3 | grep ttl`
 if [ "$p" == "" ]; then
 	echo "Sorry,something went wrong!"
 else
-	echo "Congratulations！Enjoy the speed..."
+	echo "Congratulations！Enjoy ..."
 fi
 
 
