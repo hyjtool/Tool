@@ -112,4 +112,7 @@ do_check(){
 
 do_check
 
+
+#清理
 rm -rf /root/shadowsocksR.sh
+
