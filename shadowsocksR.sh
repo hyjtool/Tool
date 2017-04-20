@@ -34,7 +34,7 @@ get_char(){
 
 # 安装ShadowsocksR
 
-yum install git
+yum install -y git
 
 git clone -b manyuser https://github.com/shadowsocksr/shadowsocksr.git
 
