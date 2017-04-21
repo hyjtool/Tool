@@ -11,7 +11,7 @@ clear
 echo
 echo "#############################################################"
 echo "#                   ShadowsocksR Server                     #"
-echo "#         System Required:  Centos 7 x86_64                 #"
+echo "#         System Required:  Debian 8.0 x86_64               #"
 echo "#     Github: https://github.com/breakwa11/shadowsocks      #"
 echo "#     Thanks: @breakwa11 <https://twitter.com/breakwa11>    #"
 echo "#############################################################"
