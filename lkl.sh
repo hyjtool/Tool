@@ -36,6 +36,7 @@ cat > /root/lkl/haproxy.cfg<<-EOF
 global
 pidfile /var/run/haproxy.pid
 ulimit-n 15000
+
 defaults
 log global
 mode tcp
@@ -43,10 +44,9 @@ option dontlognull
 timeout connect 1000
 timeout client 150000
 timeout server 150000
-frontend proxy-in
+
+listen proxy-in
 bind *:443
-default_backend proxy-out
-backend proxy-out
 server server1 10.0.0.1 maxconn 20480
 EOF
 
