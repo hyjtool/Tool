@@ -59,13 +59,13 @@ EOF
 chmod +x lkl.sh
 chmod +x run.sh
 
-#写入自动启动
+#开机自启
 sed -i "s/exit 0/ /ig" /etc/rc.local
 echo "/root/lkl/run.sh" >> /etc/rc.local
 
 ./run.sh
 
-#判断是否启动
+#检查启动
 p=`ping 10.0.0.2 -c 3 | grep ttl`
 if [ "$p" == "" ]; then
 	echo "Sorry,something went wrong!"
