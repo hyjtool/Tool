@@ -54,7 +54,7 @@ rm -rf /root/shadowsocksr/user-config.json
     "local_port": 1080,
 
     "password": "ilovessr",
-    "method": "rc4-md5",
+    "method": "aes-128-ctr",
     "protocol": "auth_aes128_md5",
     "protocol_param": "",
     "obfs": "plain",
@@ -70,6 +70,7 @@ rm -rf /root/shadowsocksr/user-config.json
     "redirect": "",
     "fast_open": false
 }
+
 
 EOF
 
