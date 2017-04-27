@@ -71,9 +71,9 @@ echo "/root/lkl/run.sh" >> /etc/rc.local
 #检查启动
 p=`ping 10.0.0.2 -c 3 | grep ttl`
 if [ "$p" == "" ]; then
-	echo "Sorry,something went wrong!"
+	echo "Fail..."
 else
-	echo "Congratulations！Enjoy ..."
+	echo "Success..."
 fi
 
 
