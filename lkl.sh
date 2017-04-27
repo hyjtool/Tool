@@ -45,8 +45,11 @@ timeout connect 1000
 timeout client 150000
 timeout server 150000
 
-listen proxy-in
-bind *:443
+frontend proxy-in
+bind *:9191
+default_backend proxy-out
+
+backend proxy-out
 server server1 10.0.0.1 maxconn 20480
 EOF
 
