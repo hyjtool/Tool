@@ -2,8 +2,8 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 #=================================================================#
-#   System Required :     Debian 8.0 x86_64                       #
 #   Description :      Linux kernel library                       #
+#   System Required :     Debian 8.0 x86_64                       #
 #   Thanks :         @linhua , @allientNeko                       #
 #=================================================================#
 
@@ -69,7 +69,7 @@ echo "/root/lkl/run.sh" >> /etc/rc.local
 ./run.sh
 
 #检查启动
-p=`ping 10.0.0.2 -c 5 | grep ttl`
+p=`ping 10.0.0.2 -c 2 | grep ttl`
 if [ "$p" == "" ]; then
 	echo "Sorry,something went wrong..."
 else
