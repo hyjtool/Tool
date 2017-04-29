@@ -25,7 +25,7 @@ ip addr add 10.0.0.1/24 dev lkl-tap
 ip link set lkl-tap up
 iptables -P FORWARD ACCEPT 
 iptables -t nat -A POSTROUTING -o venet0 -j MASQUERADE
-iptables -t nat -A PREROUTING -i venet0 -p tcp --dport 443 -j DNAT --to-destination 10.0.0.2
+iptables -t nat -A PREROUTING -i venet0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.2
 
 nohup /root/lkl/lkl.sh &
 
@@ -46,7 +46,7 @@ timeout client 150000
 timeout server 150000
 
 frontend proxy-in
-bind *:443
+bind *:80
 default_backend proxy-out
 
 backend proxy-out
