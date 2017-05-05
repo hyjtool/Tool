@@ -30,11 +30,10 @@ ip addr add dev tap0 10.0.0.1/24
 sysctl -w net.ipv4.ip_forward=1
 iptables -P FORWARD ACCEPT
 
+
 # delete old iptables rules
 iptables -t nat -D POSTROUTING -o venet0 -j MASQUERADE
 iptables -t nat -D PREROUTING -i venet0 -p tcp --dport 443 -j DNAT --to-destination 10.0.0.2
-
-
 # add iptables rules
 iptables -t nat -A POSTROUTING -o venet0 -j MASQUERADE
 iptables -t nat -A PREROUTING -i venet0 -p tcp --dport 443 -j DNAT --to-destination 10.0.0.2
@@ -62,6 +61,9 @@ chmod +x /etc/rc.local
 #首次启动
 cd ~/shadowsocksr/shadowsocks
 /root/lkl/bbr.sh python server.py
+
+#提示语
+echo "Please be patient ..."
 
 #检查启动
 p=`ping 10.0.0.2 -c 5 | grep ttl`
