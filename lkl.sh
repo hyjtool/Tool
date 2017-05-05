@@ -72,3 +72,4 @@ fi
 #清理
 rm -rf /root/lkl.sh
 
+
