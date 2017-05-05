@@ -53,7 +53,7 @@ chmod +x bbr.sh
 sed -i "s/exit 0/ /ig" /etc/rc.local
 echo "
 sudo cd ~/shadowsocksr/shadowsocks
-sudo ~/bbr.sh python server.py
+sudo /root/lkl/bbr.sh python server.py
 " >> /etc/rc.local
 
 #给予权限
@@ -61,7 +61,7 @@ chmod +x /etc/rc.local
 
 #首次启动
 cd ~/shadowsocksr/shadowsocks
-~/bbr.sh python server.py
+/root/lkl/bbr.sh python server.py
 
 #检查启动
 p=`ping 10.0.0.2 -c 5 | grep ttl`
