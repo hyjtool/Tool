@@ -34,14 +34,16 @@ EOF
 #写入haproxy.cfg
 cat > /root/lkl/haproxy.cfg<<-EOF
 global
+pidfile /var/run/haproxy.pid
+ulimit-n 15000
 
 defaults
 log global
 mode tcp
 option dontlognull
-timeout connect 5000
-timeout client 50000
-timeout server 50000
+timeout connect 1000
+timeout client 150000
+timeout server 150000
 
 frontend proxy-in
 bind *:443
