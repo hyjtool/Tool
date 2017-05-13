@@ -26,7 +26,6 @@ ip link set lkl-tap up
 iptables -P FORWARD ACCEPT 
 iptables -t nat -A POSTROUTING -o venet0 -j MASQUERADE
 iptables -t nat -A PREROUTING -i venet0 -p tcp --dport 443 -j DNAT --to-destination 10.0.0.2
-iptables -t nat -A PREROUTING -i venet0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.2
 
 nohup /root/lkl/lkl.sh &
 
@@ -35,24 +34,21 @@ EOF
 #写入haproxy.cfg
 cat > /root/lkl/haproxy.cfg<<-EOF
 global
-pidfile /var/run/haproxy.pid
-ulimit-n 15000
 
 defaults
 log global
 mode tcp
 option dontlognull
-timeout connect 1000
-timeout client 150000
-timeout server 150000
+timeout connect 5000
+timeout client 50000
+timeout server 50000
 
-listen proxy1
+frontend proxy-in
 bind *:443
-server server1 10.0.0.1 maxconn 20480
+default_backend proxy-out
 
-listen proxy2
-bind *:80
-server server2 10.0.0.1 maxconn 20480
+backend proxy-out
+server server1 10.0.0.1 maxconn 20480
 EOF
 
 #写入lkl.sh
