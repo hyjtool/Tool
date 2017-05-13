@@ -46,13 +46,13 @@ timeout connect 1000
 timeout client 150000
 timeout server 150000
 
-listen proxy-in
+listen proxy1
 bind *:443
-server server1 10.0.0.1:30086 maxconn 20480
+server server1 10.0.0.1 maxconn 20480
 
-listen proxy-in-80
+listen proxy2
 bind *:80
-server server2 10.0.0.1:30080 maxconn 20480
+server server2 10.0.0.1 maxconn 20480
 EOF
 
 #写入lkl.sh
