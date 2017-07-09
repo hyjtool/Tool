@@ -8,7 +8,7 @@ export PATH
 #=================================================================#
 
 #安装haproxy
-apt-get install -y haproxy
+yum install -y haproxy
 
 #创建文件夹
 mkdir /root/lkl
@@ -63,8 +63,8 @@ chmod +x lkl.sh
 chmod +x run.sh
 
 #开机自启
-sed -i "s/exit 0/ /ig" /etc/rc.local
-echo "/root/lkl/run.sh" >> /etc/rc.local
+echo "/root/lkl/run.sh" >> /etc/rc.d/rc.local
+chmod +x /etc/rc.d/rc.local
 
 ./run.sh
 
