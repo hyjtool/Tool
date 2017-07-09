@@ -33,8 +33,8 @@ get_char(){
 
 
 # 安装ShadowsocksR
-apt-get update
-apt-get install -y git
+
+yum install -y git
 
 git clone -b manyuser https://github.com/shadowsocksr/shadowsocksr.git
 
@@ -45,26 +45,90 @@ bash initcfg.sh
 
 # 开机自启
 cat > /etc/systemd/system/shadowsocks.service<<-EOF
-[Unit]
-Description=ShadowsocksR server
-After=network.target
-Wants=network.target
 
-[Service]
-Type=forking
-PIDFile=/var/run/shadowsocks.pid
-ExecStart=/usr/bin/python /root/shadowsocksr/shadowsocks/server.py --pid-file /var/run/shadowsocks.pid -c /root/shadowsocksr/user-config.json -d start
-ExecStop=/usr/bin/python /root/shadowsocksr/shadowsocks/server.py --pid-file /var/run/shadowsocks.pid -c /root/shadowsocksr/user-config.json -d stop
-ExecReload=/bin/kill -HUP $MAINPID
-KillMode=process
-Restart=always
+#!/bin/sh
+# chkconfig: 2345 90 10
+# description: Start or stop the Shadowsocks R server
+#
+### BEGIN INIT INFO
+# Provides: Shadowsocks-R
+# Required-Start: $network $syslog
+# Required-Stop: $network
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Description: Start or stop the Shadowsocks R server
+### END INIT INFO
 
-[Install]
-WantedBy=multi-user.target
+
+
+name=shadowsocks
+PY=/usr/bin/python
+SS=/root/shadowsocksr/shadowsocks/server.py
+SSPY=server.py
+conf=/root/shadowsocksr/user-config.json
+
+start(){
+    $PY $SS -c $conf -d start
+    RETVAL=$?
+    if [ "$RETVAL" = "0" ]; then
+        echo "$name start success"
+    else
+        echo "$name start failed"
+    fi
+}
+
+stop(){
+    pid=`ps -ef | grep -v grep | grep -v ps | grep -i "${SSPY}" | awk '{print $2}'`
+    if [ ! -z "$pid" ]; then
+        $PY $SS -c $conf -d stop
+        RETVAL=$?
+        if [ "$RETVAL" = "0" ]; then
+            echo "$name stop success"
+        else
+            echo "$name stop failed"
+        fi
+    else
+        echo "$name is not running"
+        RETVAL=1
+    fi
+}
+
+status(){
+    pid=`ps -ef | grep -v grep | grep -v ps | grep -i "${SSPY}" | awk '{print $2}'`
+    if [ -z "$pid" ]; then
+        echo "$name is not running"
+        RETVAL=1
+    else
+        echo "$name is running with PID $pid"
+        RETVAL=0
+    fi
+}
+
+case "$1" in
+'start')
+    start
+    ;;
+'stop')
+    stop
+    ;;
+'status')
+    status
+    ;;
+'restart')
+    stop
+    start
+    RETVAL=$?
+    ;;
+*)
+    echo "Usage: $0 { start | stop | restart | status }"
+    RETVAL=1
+    ;;
+esac
+exit $RETVAL
 
 EOF
 
-systemctl enable shadowsocks.service && systemctl start shadowsocks.service
+chmod 755 /etc/init.d/shadowsocks && chkconfig --add shadowsocks && service shadowsocks start
 
 
 #检查启动
