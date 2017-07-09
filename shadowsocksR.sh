@@ -44,7 +44,7 @@ bash initcfg.sh
 
 
 # 开机自启
-cat > /etc/systemd/system/shadowsocks.service<<-EOF
+cat > /etc/init.d/shadowsocks<<-EOF
 
 #!/bin/sh
 # chkconfig: 2345 90 10
