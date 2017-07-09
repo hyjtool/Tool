@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 #=================================================================#
 #   Description :      Linux kernel library                       #
-#   System Required :     Debian 8.0 x86_64                       #
+#   System Required :     Centos 7.0 x86_64                       #
 #   Thanks :         @linhua , @allientNeko                       #
 #=================================================================#
 
