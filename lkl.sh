@@ -50,7 +50,7 @@ EOF
 #写入run.sh
 cat > /root/lkl/run.sh<<-EOF
 #!/bin/bash
-~/bbr.sh /usr/bin/python /root/shadowsocksr/shadowsocks/server.py --pid-file /var/run/shadowsocks.pid -c /root/shadowsocksr/user-config.json
+~/lkl/bbr.sh /usr/bin/python /root/shadowsocksr/shadowsocks/server.py --pid-file /var/run/shadowsocks.pid -c /root/shadowsocksr/user-config.json
 
 EOF
 
@@ -70,7 +70,7 @@ chmod +x /etc/rc.d/rc.local
 
 
 #检查启动
-p=`ping 10.0.0.2 -c 5 | grep ttl`
+p=`ping 10.0.0.2 -c 3 | grep ttl`
 if [ "$p" == "" ]; then
 	echo "Sorry,something went wrong..."
 else
