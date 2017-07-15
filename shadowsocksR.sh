@@ -64,9 +64,9 @@ WantedBy=multi-user.target
 
 EOF
 
-systemctl enable shadowsocks.service && systemctl start shadowsocks.service
 
-
+#启动
+/usr/bin/python /root/shadowsocksr/shadowsocks/server.py --pid-file /var/run/shadowsocks.pid -c /root/shadowsocksr/user-config.json -d start
 
 
 #检查启动
