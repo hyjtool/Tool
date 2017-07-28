@@ -96,7 +96,7 @@ WantedBy=multi-user.target
 EOF
 
 
-#首次启动systemctl enable shadowsocksr.service && systemctl start shadowsocksr.service
+#自启systemctl enable shadowsocksr.service && systemctl start shadowsocksr.service
 
 
 #启动
