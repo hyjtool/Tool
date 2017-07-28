@@ -36,7 +36,7 @@ get_char(){
 
 yum install -y git
 
-git clone -b manyuser https://github.com/hyjtool/shadowsocksr.git
+git clone https://github.com/hyjtool/shadowsocksr.git
 
 cd ~/shadowsocksr
 
@@ -94,6 +94,9 @@ Restart=always
 WantedBy=multi-user.target
 
 EOF
+
+
+#首次启动systemctl enable shadowsocksr.service && systemctl start shadowsocksr.service
 
 
 #启动
