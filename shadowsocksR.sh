@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 #=================================================================#
 #   Description:           ShadowsocksR Server                    #
-#   System Required:       Centos 7.0 x86_64                      #
+#   System Required:       Centos 6.0 x86_64                      #
 #   Thanks: @breakwa11 <https://twitter.com/breakwa11>            #
 #=================================================================#
 
@@ -11,7 +11,7 @@ clear
 echo
 echo "#############################################################"
 echo "#                   ShadowsocksR Server                     #"
-echo "#         System Required: Centos 7.0 x86_64                #"
+echo "#         System Required: Centos 6.0 x86_64                #"
 echo "#     Github: https://github.com/breakwa11/shadowsocks      #"
 echo "#     Thanks: @breakwa11 <https://twitter.com/breakwa11>    #"
 echo "#############################################################"
@@ -72,31 +72,6 @@ cat > /root/shadowsocksr/user-config.json<<-EOF
 }
 
 EOF
-
-
-# 开机自启
-cat > /etc/systemd/system/shadowsocks.service<<-EOF
-[Unit]
-Description=ShadowsocksR server
-After=network.target
-Wants=network.target
-
-[Service]
-Type=forking
-PIDFile=/var/run/shadowsocks.pid
-ExecStart=/usr/bin/python /root/shadowsocksr/shadowsocks/server.py --pid-file /var/run/shadowsocks.pid -c /root/shadowsocksr/user-config.json -d start
-ExecStop=/usr/bin/python /root/shadowsocksr/shadowsocks/server.py --pid-file /var/run/shadowsocks.pid -c /root/shadowsocksr/user-config.json -d stop
-ExecReload=/bin/kill -HUP $MAINPID
-KillMode=process
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-
-EOF
-
-
-#自启systemctl enable shadowsocksr.service && systemctl start shadowsocksr.service
 
 
 #启动
