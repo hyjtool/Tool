@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 #=================================================================#
 #   Description:           ShadowsocksR Server                    #
-#   System Required:       Centos 6.0 x86_64 +                    #
+#   System Required:       Centos 6.0 x86_64                      #
 #   Thanks: @breakwa11 <https://twitter.com/breakwa11>            #
 #=================================================================#
 
@@ -11,7 +11,7 @@ clear
 echo
 echo "#############################################################"
 echo "#                   ShadowsocksR Server                     #"
-echo "#         System Required: Centos 6.0 x86_64 +              #"
+echo "#         System Required: Centos 6.0 x86_64                #"
 echo "#     Github: https://github.com/breakwa11/shadowsocks      #"
 echo "#     Thanks: @breakwa11 <https://twitter.com/breakwa11>    #"
 echo "#############################################################"
