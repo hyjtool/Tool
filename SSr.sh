@@ -74,22 +74,12 @@ cat > /root/shadowsocksr/user-config.json<<-EOF
 EOF
 
 
-# 开机自启文件
-cat > /root/shadowsocksr/run.sh<<-EOF
-#!/bin/bash
-/usr/bin/python /root/shadowsocksr/shadowsocks/server.py --pid-file /var/run/shadowsocks.pid -c /root/shadowsocksr/user-config.json -d start
-
-EOF
-
-#给予权限
-chmod +x run.sh
-
 #开机自启
-echo "/root/shadowsocksr/run.sh" >> /etc/rc.d/rc.local
+echo "/usr/bin/python /root/shadowsocksr/shadowsocks/server.py --pid-file /var/run/shadowsocks.pid -c /root/shadowsocksr/user-config.json -d start" >> /etc/rc.d/rc.local
 chmod +x /etc/rc.d/rc.local
 
 #启动
-./run.sh
+/usr/bin/python /root/shadowsocksr/shadowsocks/server.py --pid-file /var/run/shadowsocks.pid -c /root/shadowsocksr/user-config.json -d start
 
 #检查启动
 do_check(){
