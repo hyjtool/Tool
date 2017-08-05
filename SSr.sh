@@ -85,7 +85,7 @@ EOF
 chmod +x run.sh
 
 #开机自启
-echo "/root/lkl/run.sh" >> /etc/rc.d/rc.local
+echo "/root/shadowsocksr/run.sh" >> /etc/rc.d/rc.local
 chmod +x /etc/rc.d/rc.local
 
 #启动
