@@ -14,6 +14,7 @@ wget -O /usr/bin/rinetd-bbr https://github.com/linhua55/lkl_study/releases/downl
 #给予权限
 chmod a+x /usr/bin/rinetd-bbr
 
+
 #配置文件
 cat > /etc/rinetd-bbr.conf<<-EOF
 # bindadress bindport connectaddress connectport
