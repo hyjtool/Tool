@@ -74,6 +74,11 @@ cat > /root/shadowsocksr/user-config.json<<-EOF
 EOF
 
 
+#开机自启
+echo "/usr/bin/python /root/shadowsocksr/shadowsocks/server.py --pid-file /var/run/shadowsocks.pid -c /root/shadowsocksr/user-config.json -d start" >> /etc/rc.d/rc.local
+chmod +x /etc/rc.d/rc.local
+
+
 #启动
 /usr/bin/python /root/shadowsocksr/shadowsocks/server.py --pid-file /var/run/shadowsocks.pid -c /root/shadowsocksr/user-config.json -d start
 
