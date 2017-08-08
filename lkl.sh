@@ -13,7 +13,7 @@ cd /root/lkl
 
 
 #下载liblkl-hijack.so
-wget --no-check-certificate https://raw.githubusercontent.com/hyjtool/Tool/master/liblkl-hijack.so
+wget --no-check-certificate https://github.com/hyjtool/Tool/releases/download/v2.0/liblkl-hijack.so
 
 
 #写入bbr.sh
