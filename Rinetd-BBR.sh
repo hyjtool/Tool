@@ -8,7 +8,7 @@ export PATH
 #=================================================================#
 
 #下载文件到 /usr/bin/rinetd-bbr
-wget -O /usr/bin/rinetd-bbr https://github.com/linhua55/lkl_study/releases/download/v1.2/rinetd_bbr_powered
+wget -O /usr/bin/rinetd-bbr https://github.com/hyjtool/Tool/releases/download/v1.2/rinetd_bbr_powered
 
 
 #给予权限
