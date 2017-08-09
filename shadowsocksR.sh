@@ -53,7 +53,7 @@ cat > /root/shadowsocksr/user-config.json<<-EOF
     "local_port": 1080,
 
     "password": "ilovessr",
-    "method": "aes-256-ctr",
+    "method": "aes-128-ctr",
     "protocol": "auth_aes128_md5",
     "protocol_param": "",
     "obfs": "plain",
