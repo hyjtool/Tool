@@ -463,7 +463,7 @@ install_shadowsocks(){
     echo -e "Your Password         : \033[41;37m ${shadowsockspwd} \033[0m"
     echo -e "Your Encryption Method: \033[41;37m ${shadowsockscipher} \033[0m"
     echo
-    echo "Enjoy it!"
+    echo "BBR加速:wget --no-check-certificate https://raw.githubusercontent.com/hyjtool/Tool/master/Rinetd-BBR.sh && bash Rinetd-BBR.sh"
     echo
 }
 
