@@ -232,7 +232,6 @@ pre_install(){
             /etc/init.d/shadowsocks stop
         fi
     elif [ ${status} -eq 2 ]; then
-        print_info
         get_latest_version
         echo -e "[${green}Info${plain}] Latest version: ${green}${shadowsocks_libev_ver}${plain}"
         echo
