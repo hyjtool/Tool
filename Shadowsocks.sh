@@ -2,8 +2,8 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 #===================================================================#
-#   System Required:  CentOS 6 or 7                                 #
-#   Description: Install Shadowsocks-libev server for CentOS 6 or 7 #
+#   System Required:  CentOS                                        #
+#   Description: Install Shadowsocks-libev server for CentOS        #
 #   Thanks: @madeye <https://github.com/madeye>                     #
 #===================================================================#
 
@@ -18,15 +18,15 @@ mbedtls_url="http://dl.teddysun.com/files/mbedtls-2.5.1-gpl.tgz"
 
 # Stream Ciphers
 ciphers=(
-aes-256-gcm
-aes-192-gcm
 aes-128-gcm
-aes-256-ctr
-aes-192-ctr
+aes-192-gcm
+aes-256-gcm
 aes-128-ctr
-aes-256-cfb
-aes-192-cfb
+aes-192-ctr
+aes-256-ctr
 aes-128-cfb
+aes-192-cfb
+aes-256-cfb
 camellia-128-cfb
 camellia-192-cfb
 camellia-256-cfb
@@ -112,14 +112,6 @@ check_version(){
     fi
 }
 
-print_info(){
-    clear
-    echo "#############################################################"
-    echo "# Install Shadowsocks-libev server for CentOS 6 or 7        #"
-    echo "# Github: https://github.com/shadowsocks/shadowsocks-libev  #"
-    echo "#############################################################"
-    echo
-}
 
 # Check system
 check_sys(){
