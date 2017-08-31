@@ -84,9 +84,9 @@ EOF
 
 ldconfig
 
-tar zxf ${shadowsocks_libev_ver}.tar.gz
-    
-cd ${shadowsocks_libev_ver}
+tar zxf shadowsocks-libev\*
+
+cd shadowsocks-libev\*
 
 ./configure --disable-documentation
 
