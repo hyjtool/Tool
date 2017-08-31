@@ -47,7 +47,7 @@ get_latest_shadowsocks(){
 }
 get_latest_shadowsocks
 
-wget --no-check-certificate  "${download_link}"
+wget --no-check-certificate  ${download_link}
 
 #install_libsodium
 wget --no-check-certificate  https://download.libsodium.org/libsodium/releases/libsodium-1.0.13.tar.gz
@@ -56,6 +56,7 @@ cd libsodium-1.0.13
 ./configure --prefix=/usr && make && make install
 
 #install_mbedtls
+cd ~
 wget --no-check-certificate  https://tls.mbed.org/download/mbedtls-2.5.1-gpl.tgz
 tar xf mbedtls-2.5.1-gpl.tgz
 cd  mbedtls-2.5.1
@@ -81,12 +82,13 @@ EOF
 
 
 # Install Shadowsocks-libev
+cd ~
 
 ldconfig
 
-tar zxf shadowsocks-libev\*
+tar zxf shadowsocks-libev*
 
-cd shadowsocks-libev\*
+cd shadowsocks-libev*
 
 ./configure --disable-documentation
 
