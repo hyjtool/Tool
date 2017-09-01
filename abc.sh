@@ -114,6 +114,6 @@ do_check
 
 #清理
 rm -rf /root/Shadowsocks.sh
-rm -rf /root/${shadowsocks_libev_ver}.tar.gz
-rm -rf /root/libsodium-1.0.13.tar.gz
-rm -rf /root/mbedtls-2.5.1-gpl.tgz     
+rm -rf /root/${shadowsocks_libev_ver} ${shadowsocks_libev_ver}.tar.gz
+rm -rf /root/libsodium-1.0.13 libsodium-1.0.13.tar.gz
+rm -rf /root/mbedtls-2.5.1 mbedtls-2.5.1-gpl.tgz     
