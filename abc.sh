@@ -10,10 +10,10 @@ export PATH
 clear
 echo
 echo "#############################################################"
-echo "#                   Shadowsocks Server                      #"
-echo "#   System Required: Centos 6 x86_64                        #"
-echo "#   Github:https://github.com/clowwindy/shadowsocks-libev   #"
-echo "#   Thanks:      clowwindy                                  #"
+echo "#                   Shadowsocks Server                       #"
+echo "#         System Required: Centos 6 x86_64                   #"
+echo "#        Github: <https://github.com/madeye>                 #"
+echo "#                 Thanks:  madeye                            #"
 echo "#############################################################"
 echo
 
@@ -50,10 +50,12 @@ get_latest_shadowsocks
 wget --no-check-certificate  ${download_link}
 
 #install_libsodium
+cd ~
 wget --no-check-certificate  https://download.libsodium.org/libsodium/releases/libsodium-1.0.13.tar.gz
 tar zxf libsodium-1.0.13.tar.gz
 cd libsodium-1.0.13
 ./configure --prefix=/usr && make && make install
+ldconfig
 
 #install_mbedtls
 cd ~
@@ -62,10 +64,9 @@ tar xf mbedtls-2.5.1-gpl.tgz
 cd  mbedtls-2.5.1
 make SHARED=1 CFLAGS=-fPIC
 make DESTDIR=/usr install
- 
+ldconfig
 
 # Config shadowsocks
-
 mkdir -p /etc/shadowsocks-libev
 
 cat > /etc/shadowsocks-libev/config.json<<-EOF
@@ -84,8 +85,6 @@ EOF
 # Install Shadowsocks-libev
 cd ~
 
-ldconfig
-
 tar zxf shadowsocks-libev*
 
 cd shadowsocks-libev*
@@ -93,6 +92,10 @@ cd shadowsocks-libev*
 ./configure --disable-documentation
 
 make && make install
+
+#开机自启
+echo "/usr/bin/python /root/shadowsocksr/shadowsocks/server.py --pid-file /var/run/shadowsocks.pid -c /root/shadowsocksr/user-config.json -d start" >> /etc/rc.d/rc.local
+chmod +x /etc/rc.d/rc.local
 
 #启动
 /usr/local/bin/ss-server -u -c /etc/shadowsocks-libev/config.json -f /var/run/shadowsocks-libev.pid
@@ -109,4 +112,8 @@ do_check(){
 
 do_check
 
-        
+#清理
+rm -rf /root/Shadowsocks.sh
+rm -rf /root/${shadowsocks_libev_ver}.tar.gz
+rm -rf /root/libsodium-1.0.13.tar.gz
+rm -rf /root/mbedtls-2.5.1-gpl.tgz     
