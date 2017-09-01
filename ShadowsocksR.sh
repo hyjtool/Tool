@@ -97,5 +97,5 @@ do_check
 
 
 #清理
-rm -rf /root/shadowsocksR.sh
+rm -rf /root/ShadowsocksR.sh
 
