@@ -37,17 +37,6 @@ yum install -y epel-release
 
 yum install -y unzip gettext gcc autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel pcre-devel
 
-# Download latest shadowsocks-libev
-get_latest_shadowsocks(){
-    ver=$(wget --no-check-certificate -qO- https://api.github.com/repos/shadowsocks/shadowsocks-libev/releases/latest | grep 'tag_name' | cut -d\" -f4)
-    [ -z ${ver} ] && echo "Error: Get shadowsocks-libev latest version failed" && exit 1
-    shadowsocks_libev_ver="shadowsocks-libev-$(echo ${ver} | sed -e 's/^[a-zA-Z]//g')"
-    download_link="https://github.com/shadowsocks/shadowsocks-libev/releases/download/${ver}/${shadowsocks_libev_ver}.tar.gz"
-    
-}
-get_latest_shadowsocks
-
-wget --no-check-certificate  ${download_link}
 
 #install_libsodium
 cd ~
@@ -65,6 +54,20 @@ cd  mbedtls-2.5.1
 make SHARED=1 CFLAGS=-fPIC
 make DESTDIR=/usr install
 ldconfig
+
+
+# Download latest shadowsocks-libev
+get_latest_shadowsocks(){
+    ver=$(wget --no-check-certificate -qO- https://api.github.com/repos/shadowsocks/shadowsocks-libev/releases/latest | grep 'tag_name' | cut -d\" -f4)
+    [ -z ${ver} ] && echo "Error: Get shadowsocks-libev latest version failed" && exit 1
+    shadowsocks_libev_ver="shadowsocks-libev-$(echo ${ver} | sed -e 's/^[a-zA-Z]//g')"
+    download_link="https://github.com/shadowsocks/shadowsocks-libev/releases/download/${ver}/${shadowsocks_libev_ver}.tar.gz"
+    
+}
+get_latest_shadowsocks
+
+wget --no-check-certificate  ${download_link}
+
 
 # Config shadowsocks
 mkdir -p /etc/shadowsocks-libev
