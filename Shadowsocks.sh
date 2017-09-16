@@ -35,7 +35,7 @@ get_char(){
 #Install necessary dependencies
 yum install -y epel-release 
 
-yum install -y unzip gettext gcc autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel
+yum install -y unzip gettext gcc autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel pcre-devel
 
 # Download latest shadowsocks-libev
 get_latest_shadowsocks(){
