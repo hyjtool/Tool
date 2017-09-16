@@ -17,7 +17,7 @@ echo "#                 Thanks:  madeye                            #"
 echo "#############################################################"
 echo
 
-# 提示
+# Info
 get_char(){
         SAVEDSTTY=`stty -g`
         stty -echo
@@ -32,13 +32,13 @@ get_char(){
     char=`get_char`
 
 
-#Install necessary dependencies
+# Install necessary dependencies
 yum install -y epel-release 
 
 yum install -y unzip gettext gcc autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel pcre-devel
 
 
-#install_libsodium
+# Install_libsodium
 cd ~
 wget --no-check-certificate  https://download.libsodium.org/libsodium/releases/libsodium-1.0.13.tar.gz
 tar zxf libsodium-1.0.13.tar.gz
@@ -46,7 +46,7 @@ cd libsodium-1.0.13
 ./configure --prefix=/usr && make && make install
 ldconfig
 
-#install_mbedtls
+# Install_mbedtls
 cd ~
 wget --no-check-certificate  https://tls.mbed.org/download/mbedtls-2.5.1-gpl.tgz
 tar xf mbedtls-2.5.1-gpl.tgz
@@ -96,14 +96,14 @@ cat > /etc/shadowsocks-libev/config.json<<-EOF
 EOF
 
 
-#开机自启
+# 开机自启
 echo "/usr/local/bin/ss-server -u -c /etc/shadowsocks-libev/config.json -f /var/run/shadowsocks-libev.pid" >> /etc/rc.d/rc.local
 chmod +x /etc/rc.d/rc.local
 
-#启动
+# 启动
 /usr/local/bin/ss-server -u -c /etc/shadowsocks-libev/config.json -f /var/run/shadowsocks-libev.pid
 
-#检查启动
+# 检查启动
 do_check(){
     pid=`ps -ef | grep -v grep | grep -v ps | grep -i "ss-server" | awk '{print $2}'`
     if [ -z $pid ]; then
@@ -115,7 +115,7 @@ do_check(){
 
 do_check
 
-#清理
+# 清理
 rm -rf /root/Shadowsocks.sh
 rm -rf /root/shadowsocks*
 rm -rf /root/libsodium*
