@@ -57,6 +57,7 @@ ldconfig
 
 
 # Download latest shadowsocks-libev
+cd ~
 get_latest_shadowsocks(){
     ver=$(wget --no-check-certificate -qO- https://api.github.com/repos/shadowsocks/shadowsocks-libev/releases/latest | grep 'tag_name' | cut -d\" -f4)
     [ -z ${ver} ] && echo "Error: Get shadowsocks-libev latest version failed" && exit 1
@@ -67,6 +68,16 @@ get_latest_shadowsocks(){
 get_latest_shadowsocks
 
 wget --no-check-certificate  ${download_link}
+
+
+# Install Shadowsocks-libev
+tar zxf shadowsocks-libev*
+
+cd shadowsocks-libev*
+
+./configure --disable-documentation
+
+make && make install
 
 
 # Config shadowsocks
@@ -84,17 +95,6 @@ cat > /etc/shadowsocks-libev/config.json<<-EOF
 }
 EOF
 
-
-# Install Shadowsocks-libev
-cd ~
-
-tar zxf shadowsocks-libev*
-
-cd shadowsocks-libev*
-
-./configure --disable-documentation
-
-make && make install
 
 #开机自启
 echo "/usr/local/bin/ss-server -u -c /etc/shadowsocks-libev/config.json -f /var/run/shadowsocks-libev.pid" >> /etc/rc.d/rc.local
