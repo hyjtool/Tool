@@ -35,7 +35,7 @@ get_char(){
 #Install necessary dependencies
 yum install -y epel-release 
 
-yum install -y unzip openssl openssl-devel gettext gcc autoconf libtool automake make asciidoc xmlto udns-devel libev-devel pcre pcre-devel git
+yum install -y unzip openssl openssl-devel gettext gcc autoconf libtool automake make asciidoc xmlto udns-devel libev-devel pcre pcre-devel git c-ares-devel
 
 # Download latest shadowsocks-libev
 get_latest_shadowsocks(){
