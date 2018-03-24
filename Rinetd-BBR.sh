@@ -32,14 +32,17 @@ EOF
 cat > /etc/systemd/system/rinetd-bbr.service<<-EOF
 [Unit]
 Description=rinetd with bbr
+
 [Service]
-ExecStart=/usr/bin/rinetd-bbr -f -c /etc/rinetd-bbr.conf raw venet0:0 &
+ExecStart=/usr/bin/rinetd-bbr -f -c /etc/rinetd-bbr.conf raw venet0:0
 Restart=always
 User=root
+
 [Install]
 WantedBy=multi-user.target
 
 EOF
+
 systemctl enable rinetd-bbr.service
 
 #启动
