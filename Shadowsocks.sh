@@ -104,7 +104,7 @@ cat > /etc/systemd/system/shadowsocks.service<<-EOF
 Description=Shadowsocks Server
 After=network.target
 [Service]
-ExecStart=/usr/bin/ss-server -c /etc/shadowsocks-libev/config.json -u
+ExecStart=/usr/local/bin/ss-server -c /etc/shadowsocks-libev/config.json -u
 Restart=on-abort
 [Install]
 WantedBy=multi-user.target
