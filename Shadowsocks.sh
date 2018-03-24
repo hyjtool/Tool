@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 #=================================================================#
 #   Description:           Shadowsocks Server                     #
-#   System Required:       Centos 6 x86_64                        #
+#   System Required:       Centos 7 x86_64                        #
 #   Thanks:                clowwindy                              #
 #=================================================================#
 
@@ -11,7 +11,7 @@ clear
 echo
 echo "#############################################################"
 echo "#                   Shadowsocks Server                       #"
-echo "#         System Required: Centos 6 x86_64                   #"
+echo "#         System Required: Centos 7 x86_64                   #"
 echo "#        Github: <https://github.com/madeye>                 #"
 echo "#                 Thanks:  madeye                            #"
 echo "#############################################################"
@@ -35,7 +35,7 @@ get_char(){
 # Install necessary dependencies
 yum install -y epel-release 
 
-yum install -y unzip gettext gcc autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel pcre-devel
+yum install -y git unzip gettext gcc autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel pcre-devel
 
 
 # Install_libsodium
@@ -91,17 +91,39 @@ cat > /etc/shadowsocks-libev/config.json<<-EOF
     "local_port":1080,
     "password":"ilovess",
     "timeout":600,
-    "method":"aes-128-gcm"
+    "method":"aes-128-gcm",
+    "plugin":"/usr/local/bin/obfs-server --obfs http"
 }
+
 EOF
 
 
 # 开机自启
-echo "/usr/local/bin/ss-server -u -c /etc/shadowsocks-libev/config.json -f /var/run/shadowsocks-libev.pid" >> /etc/rc.d/rc.local
-chmod +x /etc/rc.d/rc.local
+cat > /etc/systemd/system/shadowsocks.service<<-EOF
+[Unit]
+Description=Shadowsocks Server
+After=network.target
+[Service]
+ExecStart=/usr/bin/ss-server -c /etc/shadowsocks-libev/config.json -u
+Restart=on-abort
+[Install]
+WantedBy=multi-user.target
+
+EOF
+
+systemctl enable shadowsocks
+
+# 配置simple-obfs服务端
+cd /opt
+git clone https://github.com/shadowsocks/simple-obfs.git
+cd simple-obfs
+git submodule update --init --recursive
+./autogen.sh
+./configure --disable-documentation
+make && make install
 
 # 启动
-/usr/local/bin/ss-server -u -c /etc/shadowsocks-libev/config.json -f /var/run/shadowsocks-libev.pid
+systemctl start shadowsocks
 
 # 检查启动
 do_check(){
@@ -114,6 +136,7 @@ do_check(){
 }
 
 do_check
+
 
 # 清理
 rm -rf /root/Shadowsocks.sh
