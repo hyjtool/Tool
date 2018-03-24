@@ -28,14 +28,12 @@ EOF
 
 
 #开机自启
-IFACE=$(ip -4 addr | awk '{if ($1 ~ /inet/ && $NF ~ /^[ve]/) {a=$NF}} END{print a}')
 
 cat > /etc/systemd/system/rinetd-bbr.service<<-EOF
 [Unit]
 Description=rinetd with bbr
-Documentation=https://github.com/linhua55/lkl_study
 [Service]
-ExecStart=/usr/bin/rinetd-bbr -f -c /etc/rinetd-bbr.conf raw ${IFACE}
+ExecStart=/usr/bin/rinetd-bbr -f -c /etc/rinetd-bbr.conf raw venet0:0 &
 Restart=always
 User=root
 [Install]
