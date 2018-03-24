@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 #=================================================================#
 #   Description :            Rinetd-BBR                           #
-#   System Required :     Centos 6 x86_64                         #
+#   System Required :     Centos 7 x86_64                         #
 #   Thanks :          @linhua , @allientNeko                      #
 #=================================================================#
 
@@ -28,12 +28,24 @@ EOF
 
 
 #开机自启
-echo "/usr/bin/rinetd-bbr -f -c /etc/rinetd-bbr.conf raw venet0:0 &" >> /etc/rc.d/rc.local
-chmod +x /etc/rc.d/rc.local
+IFACE=$(ip -4 addr | awk '{if ($1 ~ /inet/ && $NF ~ /^[ve]/) {a=$NF}} END{print a}')
 
+cat > /etc/systemd/system/rinetd-bbr.service<<-EOF
+[Unit]
+Description=rinetd with bbr
+Documentation=https://github.com/linhua55/lkl_study
+[Service]
+ExecStart=/usr/bin/rinetd-bbr -f -c /etc/rinetd-bbr.conf raw ${IFACE}
+Restart=always
+User=root
+[Install]
+WantedBy=multi-user.target
+
+EOF
+systemctl enable rinetd-bbr.service
 
 #启动
-/usr/bin/rinetd-bbr -f -c /etc/rinetd-bbr.conf raw venet0:0 &
+systemctl start rinetd-bbr.service
 
 
 #清理
