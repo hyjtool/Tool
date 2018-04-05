@@ -97,6 +97,15 @@ cat > /etc/shadowsocks-libev/config.json<<-EOF
 
 EOF
 
+# 配置simple-obfs服务端
+cd /opt
+git clone https://github.com/shadowsocks/simple-obfs.git
+cd simple-obfs
+git submodule update --init --recursive
+./autogen.sh
+./configure --disable-documentation
+make && make install
+
 
 # 开机自启
 cat > /etc/systemd/system/shadowsocks.service<<-EOF
@@ -113,17 +122,10 @@ EOF
 
 systemctl enable shadowsocks
 
-# 配置simple-obfs服务端
-cd /opt
-git clone https://github.com/shadowsocks/simple-obfs.git
-cd simple-obfs
-git submodule update --init --recursive
-./autogen.sh
-./configure --disable-documentation
-make && make install
 
 # 启动
 systemctl start shadowsocks
+
 
 # 检查启动
 do_check(){
