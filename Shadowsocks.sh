@@ -91,20 +91,10 @@ cat > /etc/shadowsocks-libev/config.json<<-EOF
     "local_port":1080,
     "password":"ilovess",
     "timeout":300,
-    "method":"aes-128-gcm",
-    "plugin":"/usr/local/bin/obfs-server --obfs http"
+    "method":"aes-128-gcm"
 }
 
 EOF
-
-# 配置simple-obfs服务端
-cd /opt
-git clone https://github.com/shadowsocks/simple-obfs.git
-cd simple-obfs
-git submodule update --init --recursive
-./autogen.sh
-./configure --disable-documentation
-make && make install
 
 
 # 开机自启
@@ -113,8 +103,8 @@ cat > /etc/systemd/system/shadowsocks.service<<-EOF
 Description=Shadowsocks Server
 After=network.target
 [Service]
-ExecStart=/usr/local/bin/ss-server -c /etc/shadowsocks-libev/config.json -u
-Restart=on-abort
+ExecStart=/usr/local/bin/ss-server -c -u /etc/shadowsocks-libev/config.json 
+Restart=always
 [Install]
 WantedBy=multi-user.target
 
