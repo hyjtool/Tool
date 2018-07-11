@@ -91,7 +91,7 @@ cat > /etc/shadowsocks-libev/config.json<<-EOF
     "local_port":1080,
     "password":"ilovess",
     "timeout":300,
-    "method":"aes-128-gcm"
+    "method":"aes-256-gcm"
 }
 
 EOF
