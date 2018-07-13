@@ -44,7 +44,6 @@ wget --no-check-certificate  https://download.libsodium.org/libsodium/releases/l
 tar zxf libsodium-1.0.16.tar.gz
 cd libsodium-1.0.16
 ./configure --prefix=/usr && make && make install
-ldconfig
 
 # Install_mbedtls
 cd ~
@@ -53,8 +52,6 @@ tar zxf mbedtls-2.11.0-gpl.tgz
 cd  mbedtls-2.11.0
 make SHARED=1 CFLAGS=-fPIC
 make DESTDIR=/usr install
-ldconfig
-
 
 # Download latest shadowsocks-libev
 cd ~
