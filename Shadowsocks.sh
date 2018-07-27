@@ -40,18 +40,20 @@ yum install -y git unzip gettext gcc autoconf libtool automake make asciidoc xml
 
 # Install_libsodium
 cd ~
-wget --no-check-certificate  https://download.libsodium.org/libsodium/releases/libsodium-1.0.13.tar.gz
-tar zxf libsodium-1.0.13.tar.gz
-cd libsodium-1.0.13
+wget --no-check-certificate  https://download.libsodium.org/libsodium/releases/libsodium-1.0.16.tar.gz
+tar zxf libsodium-1.0.16.tar.gz
+cd libsodium-1.0.16
 ./configure --prefix=/usr && make && make install
+ldconfig
 
 # Install_mbedtls
 cd ~
-wget --no-check-certificate  https://tls.mbed.org/download/mbedtls-2.6.0-gpl.tgz
-tar zxf mbedtls-2.6.0-gpl.tgz
-cd  mbedtls-2.6.0
+wget --no-check-certificate  https://tls.mbed.org/download/mbedtls-2.11.0-gpl.tgz
+tar zxf mbedtls-2.11.0-gpl.tgz
+cd  mbedtls-2.11.0
 make SHARED=1 CFLAGS=-fPIC
 make DESTDIR=/usr install
+ldconfig
 
 # Download latest shadowsocks-libev
 cd ~
