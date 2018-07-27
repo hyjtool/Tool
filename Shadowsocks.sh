@@ -88,11 +88,9 @@ cat > /etc/shadowsocks-libev/config.json<<-EOF
     "server_port":443,
     "password":"ilovess",
     "method":"aes-128-gcm",
-    "local_address":"127.0.0.1",
-    "local_port":1080, 
     "nameserver":"8.8.8.8",
     "mode":"tcp_and_udp",
-    "timeout":60   
+    "timeout":60  
 }
 
 EOF
