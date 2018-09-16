@@ -48,9 +48,9 @@ ldconfig
 
 # Install_mbedtls
 cd ~
-wget --no-check-certificate  https://tls.mbed.org/download/mbedtls-2.11.0-gpl.tgz
-tar zxf mbedtls-2.11.0-gpl.tgz
-cd  mbedtls-2.11.0
+wget --no-check-certificate  https://tls.mbed.org/download/mbedtls-2.13.0-gpl.tgz
+tar zxf mbedtls-2.13.0-gpl.tgz
+cd  mbedtls-2.13.0
 make SHARED=1 CFLAGS=-fPIC
 make DESTDIR=/usr install
 ldconfig
