@@ -1,0 +1,4 @@
+cd /usr/local/bin
+wget --no-check-certificate https://github.com/caddyserver/caddy/releases/download/v1.0.3/caddy_v1.0.3_linux_amd64.tar.gz  
+tar -xzf caddy*.tar.gz caddy
+wget --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/service/caddy_centos -O /etc/init.d/caddy
