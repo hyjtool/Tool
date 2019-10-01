@@ -1,4 +1,29 @@
 cd /usr/local/bin
 wget --no-check-certificate https://github.com/caddyserver/caddy/releases/download/v1.0.3/caddy_v1.0.3_linux_amd64.tar.gz  
 tar -xzf caddy*.tar.gz caddy
-wget --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/service/caddy_centos -O /etc/init.d/caddy
+
+echo "www.greggho.ml{
+ gzip
+ tls greggho.contact@gmail.com
+ proxy / 127.0.0.1:10001 {
+ websocket
+ }
+}" > /usr/local/bin/Caddyfile
+
+# 开机自启
+cat > /etc/systemd/system/Caddy.service<<-EOF
+[Unit]
+Description=Caddy Server
+
+[Service]
+ExecStart=nohup "/usr/local/bin/caddy" --conf="/usr/local/bin/Caddyfile" -agree >> /tmp/caddy.log 2>&1 &
+Restart=always
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl enable Caddy.service
+
+#启动
+systemctl start Caddy.service
+
