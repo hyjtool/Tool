@@ -16,7 +16,7 @@ cat > /etc/systemd/system/Caddy.service<<-EOF
 Description=Caddy Server
 
 [Service]
-ExecStart=nohup "/usr/local/bin/caddy" --conf="/usr/local/bin/Caddyfile" -agree >> /tmp/caddy.log 2>&1 &
+ExecStart=/usr/local/bin/caddy -log stdout -agree=true -conf=/etc/caddy/Caddyfile -root=/var/tmp
 Restart=always
 [Install]
 WantedBy=multi-user.target
