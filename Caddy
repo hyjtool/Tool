@@ -7,6 +7,29 @@ export PATH
 #   Thanks:                Myself                                 #
 #=================================================================#
 
+clear
+echo
+echo "#############################################################"
+echo "#                   Caddy Server                             #"
+echo "#         System Required: Centos 8 x86_64                   #"
+echo "#                 Thanks:  Myself                            #"
+echo "#############################################################"
+echo
+
+# Info
+get_char(){
+        SAVEDSTTY=`stty -g`
+        stty -echo
+        stty cbreak
+        dd if=/dev/tty bs=1 count=1 2> /dev/null
+        stty -raw
+        stty echo
+        stty $SAVEDSTTY
+    }
+    echo
+    echo "Press Enter to continue...or Press Ctrl+C to cancel"
+    char=`get_char`
+    
 cd /usr/local/bin
 
 wget --no-check-certificate https://github.com/caddyserver/caddy/releases/download/v1.0.3/caddy_v1.0.3_linux_amd64.tar.gz  
