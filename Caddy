@@ -38,7 +38,7 @@ wget --no-check-certificate https://github.com/caddyserver/caddy/releases/downlo
 
 tar -xzf caddy*.tar.gz caddy
 
-echo "www.greggho.ml{
+echo "www.greggho.ml {
  gzip
  tls greggho.contact@gmail.com
  proxy / 127.0.0.1:10001 {
@@ -52,7 +52,7 @@ cat > /etc/systemd/system/Caddy.service<<-EOF
 Description=Caddy Server
 
 [Service]
-ExecStart=/usr/local/bin/caddy -log stdout -agree=true -conf=/etc/caddy/Caddyfile -root=/var/tmp
+ExecStart=/usr/local/bin/caddy -log stdout -agree=true -conf=/usr/local/bin/Caddyfile -root=/var/tmp
 Restart=always
 [Install]
 WantedBy=multi-user.target
