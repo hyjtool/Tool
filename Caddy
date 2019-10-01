@@ -30,6 +30,8 @@ get_char(){
     echo "Press Enter to continue...or Press Ctrl+C to cancel"
     char=`get_char`
     
+yum -y install wget tar
+
 cd /usr/local/bin
 
 wget --no-check-certificate https://github.com/caddyserver/caddy/releases/download/v1.0.3/caddy_v1.0.3_linux_amd64.tar.gz  
