@@ -88,7 +88,7 @@ tar -xzf caddy*.tar.gz caddy
 
 echo "www.greggho.ml {
  gzip
- tls greggho.contact@gmail.com
+ tls /usr/local/bin/greggho.ml_chain.crt /usr/local/bin/greggho.ml_key.key
  proxy / 127.0.0.1:10001 {
  websocket
  }
