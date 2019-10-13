@@ -29,6 +29,8 @@ get_char(){
     echo
     echo "Press Enter to continue...or Press Ctrl+C to cancel"
     char=`get_char`
+    
+read -p "请输入你的域名" domain
 
 # 安装V2Ray
 bash <(curl -L -s https://install.direct/go.sh)
@@ -86,9 +88,9 @@ wget --no-check-certificate https://github.com/caddyserver/caddy/releases/downlo
 
 tar -xzf caddy*.tar.gz caddy
 
-echo "www.greggho.ml:443 {
+echo "$domain:443 {
  gzip
- tls /usr/local/bin/greggho.ml_chain.crt /usr/local/bin/greggho.ml_key.key
+ tls /usr/local/bin/chain.crt /usr/local/bin/key.key
  proxy / 127.0.0.1:10001 {
  websocket
  }
