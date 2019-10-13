@@ -96,8 +96,6 @@ echo "$domain:443 {
  }
 }" > /usr/local/bin/Caddyfile
 
-rm -rf caddy*.tar.gz*
-
 # 开机自启
 cat > /etc/systemd/system/Caddy.service<<-EOF
 [Unit]
@@ -115,3 +113,6 @@ systemctl enable Caddy.service
 #启动
 systemctl start Caddy.service
 
+#清理
+rm -rf /root/V2RayCaddy.sh
+rm -rf /usr/local/bin/caddy*.tar.gz*
