@@ -96,6 +96,8 @@ echo "$domain:443 {
  }
 }" > /usr/local/bin/Caddyfile
 
+rm -rf caddy*.tar.gz*
+
 # 开机自启
 cat > /etc/systemd/system/Caddy.service<<-EOF
 [Unit]
