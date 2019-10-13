@@ -30,7 +30,7 @@ get_char(){
     echo "Press Enter to continue...or Press Ctrl+C to cancel"
     char=`get_char`
     
-read -p "请输入你的域名" domain
+read -p "请输入你的域名:" domain
 
 # 安装V2Ray
 bash <(curl -L -s https://install.direct/go.sh)
