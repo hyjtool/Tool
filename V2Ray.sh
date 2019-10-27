@@ -46,8 +46,8 @@ cat > /etc/v2ray/config.json<<-EOF
          "serverName": "$domain",
          "certificates": [
             {
-              "certificateFile": "/etc/v2ray/v2ray.crt",
-              "keyFile": "/etc/v2ray/v2ray.key"
+              "certificateFile": "/root/v2ray.crt",
+              "keyFile": "/root/v2ray.key"
             }
           ]
         }
