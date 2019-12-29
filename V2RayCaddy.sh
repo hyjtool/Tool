@@ -72,7 +72,7 @@ yum -y install tar
 
 cd /usr/local/bin
 
-wget --no-check-certificate https://github.com/caddyserver/caddy/releases/download/v1.0.3/caddy_v1.0.3_linux_amd64.tar.gz  
+wget --no-check-certificate https://github.com/caddyserver/caddy/releases/download/v1.0.4/caddy_v1.0.4_linux_amd64.tar.gz  
 
 tar -xzf caddy*.tar.gz caddy
 
