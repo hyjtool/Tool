@@ -41,7 +41,10 @@ cat > /etc/v2ray/config.json<<-EOF
       ]
     },
      "streamSettings": {
-        "network": "ws"
+        "network": "ws",
+        "wsSettings": {
+          "path": "/ray"
+          }
       }
   }],
   "outbounds": [{
@@ -79,6 +82,9 @@ tar -xzf caddy*.tar.gz caddy
 echo "$domain:443 {
  gzip
  tls /usr/local/bin/chain.crt /usr/local/bin/key.key
+ proxy / https://cloudflare.com {
+ without /ray
+ }
  proxy / 127.0.0.1:10001 {
  websocket
  }
