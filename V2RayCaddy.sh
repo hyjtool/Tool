@@ -85,8 +85,9 @@ echo "$domain:443 {
  proxy / https://cloudflare.com {
  without /ray
  }
- proxy / 127.0.0.1:10001 {
+ proxy /ray 127.0.0.1:10001 {
  websocket
+ header_upstream -Origin
  }
 }" > /usr/local/bin/Caddyfile
 
