@@ -33,12 +33,12 @@ get_char(){
 
 
 # Install Shadowsocks-libev
-yum install epel-release
-yum install snapd
-systemctl enable --now snapd.socket
-ln -s /var/lib/snapd/snap /snap
-snap install core
-snap install shadowsocks-libev
+sudo yum install epel-release
+sudo yum install snapd
+sudo systemctl enable --now snapd.socket
+sudo ln -s /var/lib/snapd/snap /snap
+sudo snap install core
+sudo snap install shadowsocks-libev
 
 
 # Config shadowsocks
