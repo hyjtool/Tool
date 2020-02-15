@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 #=================================================================#
 #   Description:           Shadowsocks Server                     #
-#   System Required:       Centos 7 x86_64                        #
+#   System Required:       Centos 8 x86_64                        #
 #   Thanks:                clowwindy                              #
 #=================================================================#
 
@@ -11,7 +11,7 @@ clear
 echo
 echo "#############################################################"
 echo "#                   Shadowsocks Server                       #"
-echo "#         System Required: Centos 7 x86_64                   #"
+echo "#         System Required: Centos 8 x86_64                   #"
 echo "#        Github: <https://github.com/madeye>                 #"
 echo "#                 Thanks:  madeye                            #"
 echo "#############################################################"
@@ -32,57 +32,17 @@ get_char(){
     char=`get_char`
 
 
-# Install necessary dependencies
-yum install -y epel-release 
-
-yum install -y git unzip gettext gcc autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel pcre-devel
-
-
-# Install_libsodium
-cd ~
-wget --no-check-certificate  https://download.libsodium.org/libsodium/releases/libsodium-1.0.18.tar.gz
-tar zxf libsodium-1.0.18.tar.gz
-cd libsodium-1.0.18
-./configure --prefix=/usr && make && make install
-ldconfig
-
-# Install_mbedtls
-cd ~
-wget --no-check-certificate  https://tls.mbed.org/download/mbedtls-2.16.4-gpl.tgz
-tar zxf mbedtls-2.16.4-gpl.tgz
-cd  mbedtls-2.16.4
-make SHARED=1 CFLAGS=-fPIC
-make DESTDIR=/usr install
-ldconfig
-
-# Download latest shadowsocks-libev
-cd ~
-get_latest_shadowsocks(){
-    ver=$(wget --no-check-certificate -qO- https://api.github.com/repos/shadowsocks/shadowsocks-libev/releases/latest | grep 'tag_name' | cut -d\" -f4)
-    [ -z ${ver} ] && echo "Error: Get shadowsocks-libev latest version failed" && exit 1
-    shadowsocks_libev_ver="shadowsocks-libev-$(echo ${ver} | sed -e 's/^[a-zA-Z]//g')"
-    download_link="https://github.com/shadowsocks/shadowsocks-libev/releases/download/${ver}/${shadowsocks_libev_ver}.tar.gz"
-    
-}
-get_latest_shadowsocks
-
-wget --no-check-certificate  ${download_link}
-
-
 # Install Shadowsocks-libev
-tar zxf shadowsocks-libev*
-
-cd shadowsocks-libev*
-
-./configure --disable-documentation
-
-make && make install
+yum install epel-release
+yum install snapd
+systemctl enable --now snapd.socket
+ln -s /var/lib/snapd/snap /snap
+snap install core
+snap install shadowsocks-libev
 
 
 # Config shadowsocks
-mkdir -p /etc/shadowsocks-libev
-
-cat > /etc/shadowsocks-libev/config.json<<-EOF
+cat > /snap/bin/config.json<<-EOF
 {
     "server":"0.0.0.0",
     "server_port":443,
@@ -102,7 +62,7 @@ cat > /etc/systemd/system/shadowsocks.service<<-EOF
 Description=Shadowsocks Server
 After=network.target
 [Service]
-ExecStart=/usr/local/bin/ss-server -c /etc/shadowsocks-libev/config.json -u 
+ExecStart=/snap/bin/shadowsocks-libev.ss-server -c /snap/bin/config.json 
 Restart=always
 [Install]
 WantedBy=multi-user.target
@@ -131,6 +91,3 @@ do_check
 
 # 清理
 rm -rf /root/Shadowsocks.sh
-rm -rf /root/shadowsocks*
-rm -rf /root/libsodium*
-rm -rf /root/mbedtls* 
