@@ -82,7 +82,7 @@ tar -xzf caddy*.tar.gz caddy
 echo "$domain:443 {
  gzip
  tls /usr/local/bin/chain.crt /usr/local/bin/key.key
- proxy / https://cloudflare.com {
+ proxy / https://github.com {
  without /ray
  }
  proxy /ray 127.0.0.1:10001 {
