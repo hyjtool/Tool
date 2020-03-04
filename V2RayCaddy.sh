@@ -2,7 +2,7 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 #=================================================================#
-#   Description:           V2Ray + Caddy                          #
+#   Description:           V2Ray                                  #
 #   System Required:       Centos 8 x86_64                        #
 #   Thanks:                Myself                                 #
 #=================================================================#
@@ -10,7 +10,7 @@ export PATH
 clear
 echo
 echo "#############################################################"
-echo "#                   V2Ray + Caddy                            #"
+echo "#                       V2Ray                                #"
 echo "#         System Required: Centos 8 x86_64                   #"
 echo "#                 Thanks:  Myself                            #"
 echo "#############################################################"
