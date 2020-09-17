@@ -34,7 +34,7 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
 {
   "inbounds": [{
     "port": 443,
-    "protocol": "vmess",
+    "protocol": "vless",
     "settings": {
       "clients": [
         {
@@ -42,7 +42,8 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
           "level": 1,
           "alterId": 64
         }
-      ]
+      ],
+      "decryption": "none"
     },
     "streamSettings": {
         "network": "tcp",
