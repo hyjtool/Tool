@@ -79,18 +79,7 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
 EOF
 
 # 开机自启
-rm -rf /etc/systemd/system/v2ray.service
-
-cat > /etc/systemd/system/v2ray.service<<-EOF
-[Unit]
-Description=V2ray Server
-After=network.target
-[Service]
-ExecStart=/usr/local/bin/v2ray -config /usr/local/etc/v2ray/config.json 
-Restart=always
-[Install]
-WantedBy=multi-user.target
-EOF
+chown -R nobody:nogroup /root
 
 systemctl enable v2ray
 
