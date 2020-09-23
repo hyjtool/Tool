@@ -18,6 +18,7 @@ echo
 echo
 echo
 echo  
+read -p "请输入你的域名:" domain
 
 # 安装V2Ray
 apt update
@@ -34,7 +35,7 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
 {
   "inbounds": [{
     "port": 443,
-    "protocol": "vless",
+    "protocol": "vmess",
     "settings": {
       "clients": [
         {
@@ -47,18 +48,48 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
     },
     "streamSettings": {
         "network": "tcp",
-        "security": "tls", 
+        "security": "tls",
         "tlsSettings": {
+          "serverName": "$domain",
           "certificates": [
             {
-              "certificateFile": "/root/chain.crt", 
-              "keyFile": "/root/key.key" 
+              "certificateFile": "/root/chain.crt",
+              "keyFile": "/root/key.key"
             }
           ]
         }
       }
-  }],
-  "outbounds": [{
+   },
+
+   {
+    "port": 80,
+    "protocol": "vless",
+    "settings": {
+      "clients": [
+        {
+          "id": "bb601342-1a7d-4a5c-a678-9b6f3df9f96d",
+          "level": 1,
+          "alterId": 64
+        }
+      ],
+      "decryption": "none"
+    },
+     "streamSettings": {
+        "network": "tcp",
+        "security": "tls",
+        "tlsSettings": {
+           "serverName": "$domain",
+           "certificates": [
+            {
+              "certificateFile": "/root/chain.crt",
+              "keyFile": "/root/key.key"
+            }
+          ]
+        }
+      }
+   }
+ ],
+    "outbounds": [{
     "protocol": "freedom",
     "settings": {}
   },{
