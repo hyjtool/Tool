@@ -62,14 +62,13 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
    },
 
    {
-    "port": 80,
+    "port": 443,
     "protocol": "vless",
     "settings": {
       "clients": [
         {
           "id": "bb601342-1a7d-4a5c-a678-9b6f3df9f96d",
-          "level": 1,
-          "alterId": 64
+          "level": 0
         }
       ],
       "decryption": "none"
@@ -79,6 +78,10 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
         "security": "tls",
         "tlsSettings": {
            "serverName": "$domain",
+           "alpn": [
+             "h2",
+             "http/1.1"
+            ],
            "certificates": [
             {
               "certificateFile": "/root/chain.crt",
