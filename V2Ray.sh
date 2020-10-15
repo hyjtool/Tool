@@ -18,7 +18,20 @@ echo
 echo
 echo
 echo  
-read -p "请输入域名:" domain
+
+# Info
+get_char(){
+        SAVEDSTTY=`stty -g`
+        stty -echo
+        stty cbreak
+        dd if=/dev/tty bs=1 count=1 2> /dev/null
+        stty -raw
+        stty echo
+        stty $SAVEDSTTY
+    }
+    echo
+    echo "Press Enter to continue...or Press Ctrl+C to cancel"
+    char=`get_char`
 
 # 安装V2Ray
 apt update
