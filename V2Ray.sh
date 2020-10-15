@@ -4,7 +4,7 @@ export PATH
 #=================================================================#
 #   Description:           V2Ray                                  #
 #   System Required:       Debian 10 x86_64                       #
-#                          仅限自家使用                            #
+#   Some birds are not meant to be caged                          #
 #=================================================================#
 
 clear
@@ -12,13 +12,13 @@ echo
 echo "#############################################################"
 echo "#                       V2Ray                                #"
 echo "#         System Required: Debian 10 x86_64                  #"
-echo "#                    仅限自家使用                             #"
+echo "#        Some birds are not meant to be caged                #"
 echo "#############################################################"
 echo
 echo
 echo
 echo  
-read -p "请输入你的域名:" domain
+read -p "请输入域名:" domain
 
 # 安装V2Ray
 apt update
@@ -33,82 +33,59 @@ rm -rf /usr/local/etc/v2ray/config.json
 
 cat > /usr/local/etc/v2ray/config.json<<-EOF
 {
-  "inbounds": [{
-    "port": 443,
-    "protocol": "vmess",
-    "settings": {
-      "clients": [
-        {
-          "id": "ab601342-1a7d-4a5c-a678-9b6f3df9f96d",
-          "level": 1,
-          "alterId": 64
-        }
-      ],
-      "decryption": "none"
+    "log": {
+        "loglevel": "warning"
     },
-    "streamSettings": {
-        "network": "tcp",
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "$domain",
-          "certificates": [
+    "routing": {
+        "domainStrategy": "AsIs",
+        "rules": [
             {
-              "certificateFile": "/root/chain.crt",
-              "keyFile": "/root/key.key"
+                "type": "field",
+                "ip": [
+                    "geoip:private"
+                ],
+                "outboundTag": "block"
             }
-          ]
-        }
-      }
-   },
-
-   {
-    "port": 443,
-    "protocol": "vless",
-    "settings": {
-      "clients": [
-        {
-          "id": "bb601342-1a7d-4a5c-a678-9b6f3df9f96d",
-          "level": 0
-        }
-      ],
-      "decryption": "none"
+        ]
     },
-     "streamSettings": {
-        "network": "tcp",
-        "security": "tls",
-        "tlsSettings": {
-           "serverName": "$domain",
-           "alpn": [
-             "h2",
-             "http/1.1"
-            ],
-           "certificates": [
-            {
-              "certificateFile": "/root/chain.crt",
-              "keyFile": "/root/key.key"
+    "inbounds": [
+        {
+            "listen": "0.0.0.0",
+            "port": 443,
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "ab601342-1a7d-4a5c-a678-9b6f3df9f96d",
+                        "alterId": 4
+                    }
+                ],
+                "disableInsecureEncryption": false
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "tls",
+                "tlsSettings": {
+                    "certificates": [
+                        {
+                            "certificateFile": "/root/chain.crt",
+                            "keyFile": "/root/key.key"
+                        }
+                    ]
+                }
             }
-          ]
         }
-      }
-   }
- ],
-    "outbounds": [{
-    "protocol": "freedom",
-    "settings": {}
-  },{
-    "protocol": "blackhole",
-    "settings": {},
-    "tag": "blocked"
-  }],
-  "routing": {
-    "rules": [
-      {
-        "type": "field",
-        "ip": ["geoip:private"],
-        "outboundTag": "blocked"
-      }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "tag": "direct"
+        },
+        {
+            "protocol": "blackhole",
+            "tag": "block"
+        }
     ]
-  }
 }
 
 EOF
