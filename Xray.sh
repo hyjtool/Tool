@@ -64,7 +64,7 @@ cat > /usr/local/etc/xray/config.json<<-EOF
         ]
     },
     "inbounds": [
-        {
+          {
             "port": 443,
             "protocol": "vmess",
             "settings": {
@@ -89,7 +89,7 @@ cat > /usr/local/etc/xray/config.json<<-EOF
             }
         },
         
-     {
+    {
       "port": 80,
       "protocol": "vmess",
       "settings": {
@@ -105,7 +105,7 @@ cat > /usr/local/etc/xray/config.json<<-EOF
             }
     },
     
-     {
+    {
       "port": 443,
       "protocol": "vless",
       "settings": {
@@ -123,7 +123,7 @@ cat > /usr/local/etc/xray/config.json<<-EOF
              "dest": "www.github.com:443"
            }
         ]
-     },
+    },
       "streamSettings": {
           "network": "tcp",
           "security": "xtls",
