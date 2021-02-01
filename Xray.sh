@@ -154,8 +154,5 @@ cat > /usr/local/etc/xray/config.json<<-EOF
 EOF
 
 # 开机自启
-chown -R nobody:nogroup /root
-
-systemctl enable xray
 
 systemctl start xray
