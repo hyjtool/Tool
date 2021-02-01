@@ -47,7 +47,6 @@ bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release
 rm -rf /usr/local/etc/xray/config.json
 
 cat > /usr/local/etc/xray/config.json<<-EOF
-
 {
     "log": {
         "loglevel": "warning"
