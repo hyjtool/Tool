@@ -38,6 +38,10 @@ apt update
 
 apt install curl
 
+apt install vim
+
+touch ~/.vimrc
+
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
 
 rm -rf /usr/local/etc/xray/config.json
@@ -62,7 +66,6 @@ cat > /usr/local/etc/xray/config.json<<-EOF
     },
     "inbounds": [
         {
-            "listen": "0.0.0.0",
             "port": 443,
             "protocol": "vmess",
             "settings": {
@@ -86,6 +89,7 @@ cat > /usr/local/etc/xray/config.json<<-EOF
                 }
             }
         },
+        
      {
       "port": 80,
       "protocol": "vmess",
@@ -101,30 +105,30 @@ cat > /usr/local/etc/xray/config.json<<-EOF
                 "security": "none"
             }
     },
+    
      {
       "port": 443,
       "protocol": "vless",
       "settings": {
-       "clients": [
+        "clients": [
           {
             "id": "ab601342-1a7d-4a5c-a678-9b6f3df9f96d",
             "flow": "xtls-rprx-direct",
             "level": 0,
             "email": "love@example.com"
-            }
-                ],
+           }
+        ],
         "decryption": "none",
         "fallbacks": [
            {
-             "dest": "www.baidu.com:80",
-             "xver": 1
-            }
-       ]
-   },
-            "streamSettings": {
-                "network": "tcp",
-                "security": "xtls",
-                "xtlsSettings": {
+             "dest": "www.github.com:443"
+           }
+        ]
+     },
+      "streamSettings": {
+          "network": "tcp",
+          "security": "xtls",
+          "xtlsSettings": {
                     "alpn": [
                         "http/1.1"
                     ],
