@@ -2,7 +2,7 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 #=================================================================#
-#   Description:           V2Ray                                  #
+#   Description:           Xray                                   #
 #   System Required:       Debian 10 x86_64                       #
 #   Some birds are not meant to be caged                          #
 #=================================================================#
@@ -10,7 +10,7 @@ export PATH
 clear
 echo
 echo "#############################################################"
-echo "#                       V2Ray                                #"
+echo "#                       Xray                                 #"
 echo "#         System Required: Debian 10 x86_64                  #"
 echo "#        Some birds are not meant to be caged                #"
 echo "#############################################################"
@@ -38,13 +38,12 @@ apt update
 
 apt install curl
 
-curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
 
-bash install-release.sh
+rm -rf /usr/local/etc/xray/config.json
 
-rm -rf /usr/local/etc/v2ray/config.json
+cat > /usr/local/etc/xray/config.json<<-EOF
 
-cat > /usr/local/etc/v2ray/config.json<<-EOF
 {
     "log": {
         "loglevel": "warning"
@@ -69,7 +68,8 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
             "settings": {
                 "clients": [
                     {
-                        "id": "ab601342-1a7d-4a5c-a678-9b6f3df9f96d"
+                        "id": "ab601342-1a7d-4a5c-a678-9b6f3df9f96d",
+                        "alterId": 4
                     }
                 ]
             },
@@ -85,8 +85,60 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
                     ]
                 }
             }
+        },
+     {
+      "port": 80,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "ab601342-1a7d-4a5c-a678-9b6f3df9f96d"
+          }
+        ]
+      },
+      "streamSettings": {
+                "network": "ws",
+                "security": "none"
+            }
+    },
+     {
+      "port": 443,
+      "protocol": "vless",
+      "settings": {
+       "clients": [
+          {
+            "id": "ab601342-1a7d-4a5c-a678-9b6f3df9f96d",
+            "flow": "xtls-rprx-direct",
+            "level": 0,
+            "email": "love@example.com"
+            }
+                ],
+        "decryption": "none",
+        "fallbacks": [
+           {
+             "dest": "www.baidu.com:80",
+             "xver": 1
+            }
+       ]
+   },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "xtls",
+                "xtlsSettings": {
+                    "alpn": [
+                        "http/1.1"
+                    ],
+                    "certificates": [
+                        {
+                            "certificateFile": "/root/chain.crt",
+                            "keyFile": "/root/key.key"
+                        }
+                    ]
+                }
+            }
         }
-    ],
+  ],
+
     "outbounds": [
         {
             "protocol": "freedom",
@@ -104,6 +156,6 @@ EOF
 # 开机自启
 chown -R nobody:nogroup /root
 
-systemctl enable v2ray
+systemctl enable xray
 
-systemctl start v2ray
+systemctl start xray
