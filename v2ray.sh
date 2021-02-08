@@ -29,15 +29,15 @@ get_char(){
     char=`get_char`
 
 # 安装v2ray
-sudo apt update
+apt update
 
-sudo apt install curl
+apt install curl
 
-sudo apt install vim
+apt install vim
 
-sudo touch ~/.vimrc
+touch ~/.vimrc
 
-sudo bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
+bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
 
 rm -rf /usr/local/etc/v2ray/config.json
 
