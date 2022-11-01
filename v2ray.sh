@@ -66,21 +66,13 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
             "settings": {
                 "clients": [
                     {
-                        "id": "ab601342-1a7d-4a5c-a678-9b6f3df9f96d"
+                        "id": ""
                     }
                 ]
             },
             "streamSettings": {
-                "network": "tcp",
-                "security": "tls",
-                "tlsSettings": {
-                    "certificates": [
-                        {
-                            "certificateFile": "/root/chain.crt",
-                            "keyFile": "/root/key.key"
-                        }
-                    ]
-                }
+                "network": "ws",
+                "security": "none"
             }
         }
     ],
@@ -95,7 +87,6 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
         }
     ]
 }
-EOF
 
 # 开机自启
 chown -R nobody:nogroup /root
