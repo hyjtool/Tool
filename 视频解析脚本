@@ -158,12 +158,11 @@
             ]}],
 
             playLine:[
-                {"name":"VIP","url":"https://jx.xmflv.com/?url=","mobile":0},
-                {"name":"OK","url":"https://okjx.cc/?url=","mobile":1},
-                {"name":"Bilibili","url":"https://jx.playerjy.com/?url=","mobile":0},
-                {"name":"B站1","url":"https://jx.bozrc.com:4433/player/?url=","mobile":1},
-                {"name":"B站2","url":"https://jx.jsonplayer.com/player/?url=","mobile":1},
-                {"name":"爱豆","url":"https://jx.aidouer.net/?url=","mobile":1},
+                {"name":"VIP","url":"https://jx.xmflv.com/?url="},
+                {"name":"OK","url":"https://okjx.cc/?url="},              
+                {"name":"JY","url":"https://jx.playerjy.com/?url="},
+                {"name":"JS","url":"https://jx.jsonplayer.com/player/?url="},
+                {"name":"Idol","url":"https://jx.aidouer.net/?url="},
             ],
 
             keyCode:[
