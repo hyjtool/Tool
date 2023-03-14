@@ -28,7 +28,6 @@
 // @match        *://*.douyin.com/*
 // @match        *://*.kuaishou.com/*
 // @match        *://*.ixigua.com/*
-// @match        *://*.youtube.com/*
 // @match        *://47.99.158.118/*
 // @license      AGPL License
 // @grant        GM_download
@@ -99,7 +98,6 @@
 
         biliVideoDownload:GM_getValue('biliVideoDownload',22),
 
-        youtubeVideoDownload:GM_getValue('youtubeVideoDownload',22),
         }
 
         var {couponUrl,
@@ -119,8 +117,7 @@
             dyVideoDownload,
             ksVideoDownload,
             xiguaVideoDownload,
-            biliVideoDownload,
-            youtubeVideoDownload
+            biliVideoDownload
         } = Config;
 
         /*--datas--*/
