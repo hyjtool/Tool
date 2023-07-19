@@ -71,7 +71,7 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
                 ]
             },
             "streamSettings": {
-                "network": "ws"
+		"network": "ws"
             }
         },
         {
@@ -86,7 +86,7 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
                 ]
             },
             "streamSettings": {
-                "network": "ws",
+		"network": "ws",
 		"security": "none"
             }
         }
