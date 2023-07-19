@@ -61,7 +61,7 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
     "inbounds": [
         {
             "listen": "0.0.0.0",
-            "port": 1080,
+            "port": 8080,
             "protocol": "vmess",
             "settings": {
                 "clients": [
@@ -72,6 +72,22 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
             },
             "streamSettings": {
                 "network": "ws"
+            }
+        },
+        {
+            "listen": "127.0.0.1",
+            "port": 1234,
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    {
+                        "id": ""
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+		"security": "none"
             }
         }
     ],
@@ -86,7 +102,6 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
         }
     ]
 }
-
 EOF
 
 # 开机自启
