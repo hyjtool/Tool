@@ -87,6 +87,8 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
     ]
 }
 
+EOF
+
 # 开机自启
 systemctl enable v2ray
 systemctl start v2ray
