@@ -28,6 +28,8 @@ get_char(){
     echo "Press Enter to continue...or Press Ctrl+C to cancel"
     char=`get_char`
 
+read -p "请输入你的用户ID:" ID
+
 # 安装v2ray
 apt update
 
@@ -66,28 +68,12 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
             "settings": {
                 "clients": [
                     {
-                        "id": ""
+                        "id": "$ID"
                     }
                 ]
             },
             "streamSettings": {
 		"network": "ws"
-            }
-        },
-        {
-            "listen": "127.0.0.1",
-            "port": 1234,
-            "protocol": "vmess",
-            "settings": {
-                "clients": [
-                    {
-                        "id": ""
-                    }
-                ]
-            },
-            "streamSettings": {
-		"network": "ws",
-		"security": "none"
             }
         }
     ],
