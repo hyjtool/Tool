@@ -59,7 +59,34 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
                 ]
             },
             "streamSettings": {
-		"network": "ws"
+                "network": "ws"
+            }
+        },
+        {
+            "port": 443,
+            "protocol": "trojan",
+            "settings": {
+                "clients": [
+                    {
+                        "password":"ilovesky",
+                        "email": "love@v2fly.org"
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "tls",
+                "tlsSettings": {
+                    "alpn": [
+                        "http/1.1"
+                    ],
+                    "certificates": [
+                        {
+                            "certificateFile": "/etc/ssl/cert.crt",
+                            "keyFile": "/etc/ssl/key.key"
+                        }
+                    ]
+                }
             }
         }
     ],
