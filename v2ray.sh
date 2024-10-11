@@ -14,8 +14,6 @@ echo
 echo
 echo  
 
-read -p "请输入你的用户ID:" ID
-
 # 安装v2ray
 apt update
 
@@ -47,21 +45,6 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
         ]
     },
     "inbounds": [
-        {
-            "listen": "0.0.0.0",
-            "port": 8080,
-            "protocol": "vmess",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "$ID"
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws"
-            }
-        },
         {
             "port": 443,
             "protocol": "trojan",
