@@ -14,6 +14,8 @@ echo
 echo
 echo  
 read -p "1.请输入你的端口:" port
+echo 
+echo 
 read -p "2.请输入你的密码:" password
 
 # 安装v2ray
