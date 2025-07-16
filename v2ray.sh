@@ -13,6 +13,8 @@ echo
 echo
 echo
 echo  
+read -p "1.请输入你的端口:" port
+read -p "2.请输入你的密码:" password
 
 # 安装v2ray
 apt update
@@ -46,12 +48,12 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
     },
     "inbounds": [
         {
-            "port": 443,
+            "port": $port,
             "protocol": "trojan",
             "settings": {
                 "clients": [
                     {
-                        "password":"ilovesky",
+                        "password":"$password",
                         "email": "love@v2fly.org"
                     }
                 ]
