@@ -38,18 +38,6 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
     "log": {
         "loglevel": "warning"
     },
-    "routing": {
-        "domainStrategy": "AsIs",
-        "rules": [
-            {
-                "type": "field",
-                "ip": [
-                    "geoip:private"
-                ],
-                "outboundTag": "block"
-            }
-        ]
-    },
     "inbounds": [
         {
             "port": $port,
@@ -83,10 +71,6 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
         {
             "protocol": "freedom",
             "tag": "direct"
-        },
-        {
-            "protocol": "blackhole",
-            "tag": "block"
         }
     ]
 }
