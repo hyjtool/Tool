@@ -17,6 +17,8 @@ read -p "1.请输入你的端口:" port
 echo 
 echo 
 read -p "2.请输入你的密码:" password
+echo 
+echo 
 
 # 安装v2ray
 apt update
