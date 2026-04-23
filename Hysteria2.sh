@@ -6,7 +6,7 @@ clear
 echo
 echo "#############################################################"
 echo "#                       v2ray                                #"
-echo "#         System Required: Debian 10 x86_64                  #"
+echo "#         System Required: Debian 11 x86_64                  #"
 echo "#        Some birds are not meant to be caged                #"
 echo "#############################################################"
 echo
@@ -35,11 +35,31 @@ rm -rf /usr/local/etc/v2ray/config.json
 
 cat > /usr/local/etc/v2ray/config.json<<-EOF
 {
-    "log": {
-        "loglevel": "warning"
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": $port,
+      "protocol": "hysteria2",
+      "streamSettings": {
+        "network": "hysteria2",
+        "security": "tls",
+          "tlsSettings": {
+          "certificates": [
+            {
+              "certificateFile": "/etc/ssl/cert.crt",
+              "keyFile": "/etc/ssl/key.key"
+            }
+          ]
+          }
+        },
+        "hy2Settings": {
+          "password": "$password",
+          "use_udp_extension": true
+        }
     },
-    "inbounds": [
-        {
+    {
             "port": $port,
             "protocol": "trojan",
             "settings": {
@@ -53,10 +73,7 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
             "streamSettings": {
                 "network": "tcp",
                 "security": "tls",
-                "tlsSettings": {
-                    "alpn": [
-                        "http/1.1"
-                    ],
+                  "tlsSettings": {
                     "certificates": [
                         {
                             "certificateFile": "/etc/ssl/cert.crt",
@@ -64,16 +81,16 @@ cat > /usr/local/etc/v2ray/config.json<<-EOF
                         }
                     ]
                 }
+               }
             }
-        }
-    ],
+  ],
     "outbounds": [
         {
-            "protocol": "freedom",
-            "tag": "direct"
+            "protocol": "freedom"
         }
     ]
 }
+
 EOF
 
 # 开机自启
